@@ -24,12 +24,12 @@ function apirequest(address) {
 
     fetch(req)
     .then(response => {
-        console.log(response);
-
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       return response.json();
+      console.log(response);
+
     })
     .then(data => {
       console.log(data);
