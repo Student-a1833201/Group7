@@ -11,7 +11,9 @@ function apirequest(address) {
 
     })
     .then(data => {
-        randmon = data.results[Math.floor(Math.random()*20)].name;
+      var element = document.getElementById('randsprite');
+      element.src = data.results[Math.floor(Math.random()*20)].name
+      //randmon = data.results[Math.floor(Math.random()*20)].name;
       console.log(data);
       console.log(randmon);
 
@@ -20,8 +22,9 @@ function apirequest(address) {
       console.error('Error:', error);
     });
 
+    var element = document.getElementById('randsprite');
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
-    const req = apiUrl.concat(randmon);
+    var req = apiUrl.concat(element.src);
     //
     fetch(req)
     .then(response => {
@@ -31,7 +34,7 @@ function apirequest(address) {
       return response.json();
     })
     .then(data => {
-      var element = document.getElementById('randsprite');
+        console.log(req);
       element.src = data.sprites.front_default;
       element.alt = data.name;
       console.log(data.sprites.front_default);
