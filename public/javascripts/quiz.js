@@ -24,7 +24,6 @@ function randmon() {
 
 
 function apirequest(address) {
-    var element = document.getElementById('randsprite');
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
     var req = apiUrl.concat(address);
 
@@ -37,7 +36,7 @@ function apirequest(address) {
       return response.json();
     })
     .then(data => {
-        console.log(req);
+        var element = document.getElementById('randsprite');
         element.src = data.sprites.front_default;
         element.alt = data.name;
         console.log(data.sprites.front_default);
@@ -52,7 +51,7 @@ const pokemon = [];
 pokemon.push("charmander", "bulbasaur", "pikachu", "ditto", "mew")
 apirequest(pokemon[Math.floor(Math.random()*5)])
 
-printf(randmon());
+console.log(randmon());
 
 
 
