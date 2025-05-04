@@ -7,9 +7,9 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/quiz.html', function(req, res) {
+router.get('/quiz.txt', function(req, res) {
   const apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto';
-
+  /*
   // Make a GET request
   fetch(apiUrl)
     .then(response => {
@@ -19,14 +19,15 @@ router.get('/quiz.html', function(req, res) {
       return response.json();
     })
     .then(data => {
-      res.send(data.sprites.front_default);
       console.log(data.sprites.front_default);
+      res.send(data.sprites.front_default);
     })
     .catch(error => {
       console.error('Error:', error);
     });
 
-
+  */
+    res.send(data.sprites.front_default);
 
 });
 
