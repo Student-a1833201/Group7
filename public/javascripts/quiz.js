@@ -13,7 +13,7 @@ function apirequest(address) {
     .then(data => {
       var element = document.getElementById('randsprite');
       element.src = data.sprites.front_default;
-      element.alt = data.forms[0].name;
+      element.alt = data.name;
       console.log(data.sprites.front_default);
     })
     .catch(error => {
