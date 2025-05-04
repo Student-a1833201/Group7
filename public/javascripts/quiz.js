@@ -1,5 +1,5 @@
 // Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
-function randomMon() {
+function randonmon() {
     const test = 'https://pokeapi.co/api/v2/pokemon/';
     var randmon = "";
     fetch(test)
@@ -12,27 +12,8 @@ function randomMon() {
     })
     .then(data => {
         console.log(data.results[Math.floor(Math.random()*20)].name);
+        return JSON.stringify(data.results[Math.floor(Math.random()*20)].name);
 
-        var element = document.getElementById('randsprite');
-        const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
-        var req = apiUrl.concat(a.results[Math.floor(Math.random()*20)].name);
-
-        fetch(req)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-            console.log(req);
-            element.src = data.sprites.front_default;
-            element.alt = data.name;
-            console.log(data.sprites.front_default);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
 
       //return data.results[Math.floor(Math.random()*20)].name;
     })
@@ -70,8 +51,7 @@ function apirequest(address) {
 
 const pokemon = [];
 pokemon.push("charmander", "bulbasaur", "pikachu", "ditto", "mew")
-//apirequest(pokemon[Math.floor(Math.random()*5)])
-randomMon();
+apirequest(pokemon[Math.floor(Math.random()*5)])
 
 
 
