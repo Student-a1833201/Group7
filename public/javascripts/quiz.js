@@ -1,5 +1,5 @@
 function quizgen() {
-    var element = document.getElementById('colorful');
+    var element = document.getElementById('randsprite');
 
     var xhttp = new XMLHttpRequest();
 
@@ -9,7 +9,6 @@ function quizgen() {
         element.innerText = this.responseText;
     };
 
-    xhttp.open("GET", "/color.txt", true);
-
+    xhttp.open("GET", "/quiz.txt", true);
     xhttp.send();
 }
