@@ -19,7 +19,7 @@ router.get('/quiz.html', function(req, res) {
       return response.json();
     })
     .then(data => {
-
+      res.send(data.sprites.front_default);
       console.log(data.sprites.front_default);
     })
     .catch(error => {
