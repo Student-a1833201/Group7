@@ -26,20 +26,6 @@ router.get('/quiz.html', function(req, res) {
       console.error('Error:', error);
     });
 
-  fetch(apiUrl)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      res.send(data.sprites.front_default);
-      console.log(data.sprites.front_default);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
 
 
 });
