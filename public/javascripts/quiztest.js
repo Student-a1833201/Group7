@@ -1,0 +1,105 @@
+// Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
+function randmon() {
+    const test = 'https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0';
+    var randmon = "";
+    fetch(test)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+
+    })
+    .then(data => {
+        console.log(data.results[Math.floor(Math.random()*1025)].name);
+        var temp = data.results[Math.floor(Math.random()*1025)].name;
+        return temp;
+
+
+      //return data.results[Math.floor(Math.random()*20)].name;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
+function apirequest(address) {
+    const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+    var req = apiUrl.concat(address);
+
+    //
+    fetch(req)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+        var element = document.getElementById('randsprite');
+        element.src = data.sprites.front_default;
+        element.alt = data.name;
+        console.log(data.sprites.front_default);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
+}
+
+console.log(JSON.stringify(randmon()));
+//randmon();
+
+const pokemon = [];
+pokemon.push("charmander", "bulbasaur", "pikachu", "ditto", "mew")
+apirequest(pokemon[Math.floor(Math.random()*5)])
+
+
+
+
+
+
+
+
+
+
+
+// Define the API URL
+//const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+//const req = apiUrl.concat(pokemon[Math.floor(Math.random()*5)]);
+// Make a GET request
+
+
+/*
+var initial = 0;
+
+function fourone() {
+    var element = document.getElementById('test');
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        // Overcomplicated the heck out of this
+        element.innerText = this.responseText;
+
+        /*
+        if (this.readyState == 4 && this.status == 200) {
+            if (element.innerText  == "Init") {
+                time = new Date();
+                element.innerText  = "This page was last viewed " + String(time);
+            } else {
+                element.innerText  = "";
+                initial ++;
+            }
+        } else {
+            // Blank
+        }
+
+    };
+
+    xhttp.open("GET", "/last.txt", true);
+
+    xhttp.send();
+}
+*/
