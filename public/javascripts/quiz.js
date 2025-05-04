@@ -1,6 +1,6 @@
 // Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
 function randmon() {
-    const test = 'https://pokeapi.co/api/v2/pokemon/';
+    const test = 'https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0';
     var randmon = "";
     fetch(test)
     .then(response => {
@@ -11,8 +11,9 @@ function randmon() {
 
     })
     .then(data => {
-        console.log(JSON.stringify(data.results[Math.floor(Math.random()*20)].name));
-        return JSON.stringify(data.results[Math.floor(Math.random()*20)].name);
+        console.log(data.results[Math.floor(Math.random()*1025)].name);
+        var temp = data.results[Math.floor(Math.random()*1025)].name;
+        return temp;
 
 
       //return data.results[Math.floor(Math.random()*20)].name;
