@@ -5,7 +5,7 @@ body {
 
 a {
   color: #00B7FF;
-  background-color: grey;
+  background-color: lightyellow;
 }
 
 #title {
@@ -17,5 +17,9 @@ a {
 #header {
   font-family: sans-serif;
   text-align: center;
-  background-color: grey;
+  background-color: lightyellow;
+  border-style: double;
+  border-color: lightyellow;
+  border: 3px;
+  margin: 0px;
 }
