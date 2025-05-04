@@ -1,5 +1,5 @@
 // Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
-function randmonmon() {
+function randonmon() {
     const test = 'https://pokeapi.co/api/v2/pokemon/';
     var randmon = "";
     fetch(test)
@@ -20,31 +20,9 @@ function randmonmon() {
 
 
 function apirequest(address) {
-    const test = 'https://pokeapi.co/api/v2/pokemon/';
-    var randmon = "";
-    fetch(test)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-
-    })
-    .then(data => {
-      var element = document.getElementById('randsprite');
-      element.src = data.results[Math.floor(Math.random()*20)].name
-      //randmon = data.results[Math.floor(Math.random()*20)].name;
-      console.log(data);
-      console.log(randmon);
-
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-
     var element = document.getElementById('randsprite');
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
-    var req = apiUrl.concat(element.src);
+    var req = apiUrl.concat(randonmon());
     //
     fetch(req)
     .then(response => {
@@ -55,9 +33,9 @@ function apirequest(address) {
     })
     .then(data => {
         console.log(req);
-      element.src = data.sprites.front_default;
-      element.alt = data.name;
-      console.log(data.sprites.front_default);
+        element.src = data.sprites.front_default;
+        element.alt = data.name;
+        console.log(data.sprites.front_default);
     })
     .catch(error => {
       console.error('Error:', error);
