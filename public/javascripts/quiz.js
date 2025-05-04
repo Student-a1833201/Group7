@@ -1,23 +1,5 @@
 // Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
 function apirequest(address) {
-    const test = 'https://pokeapi.co/api/v2/pokemon/cha';
-
-    fetch(test)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-      console.log(response);
-
-    })
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
     const req = apiUrl.concat(address);
 
@@ -38,7 +20,22 @@ function apirequest(address) {
       console.error('Error:', error);
     });
 
+    const test = 'https://pokeapi.co/api/v2/pokemon/cha';
 
+    fetch(test)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 }
 
 const pokemon = [];
