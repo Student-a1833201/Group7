@@ -20,12 +20,9 @@ function apirequest(address) {
     });
 }
 
-
-
-const req = apiUrl.concat(pokemon[Math.floor(Math.random()*5)]);
-
 const pokemon = [];
 pokemon.push("charmander", "bulbasaur", "pikachu", "ditto", "mew")
+apirequest(pokemon[Math.floor(Math.random()*5)])
 
 // Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
 
