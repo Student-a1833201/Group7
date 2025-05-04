@@ -19,3 +19,35 @@ fetch(apiUrl)
     console.error('Error:', error);
   });
   */
+
+  var time = new Date();
+var initial = 0;
+
+function fourone() {
+    var element = document.getElementById('test');
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        // Overcomplicated the heck out of this
+        element.innerText = this.responseText;
+
+        /*
+        if (this.readyState == 4 && this.status == 200) {
+            if (element.innerText  == "Init") {
+                time = new Date();
+                element.innerText  = "This page was last viewed " + String(time);
+            } else {
+                element.innerText  = "";
+                initial ++;
+            }
+        } else {
+            // Blank
+        }
+        */
+    };
+
+    xhttp.open("GET", "/last.txt", true);
+
+    xhttp.send();
+}
