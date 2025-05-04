@@ -11,7 +11,30 @@ function randonmon() {
 
     })
     .then(data => {
-      return(data.results[Math.floor(Math.random()*20)].name);
+        console.log(data.results[Math.floor(Math.random()*20)].name);
+
+        var element = document.getElementById('randsprite');
+        const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+        var req = apiUrl.concat(a.results[Math.floor(Math.random()*20)].name);
+
+        fetch(req)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+            console.log(req);
+            element.src = data.sprites.front_default;
+            element.alt = data.name;
+            console.log(data.sprites.front_default);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+
+      //return data.results[Math.floor(Math.random()*20)].name;
     })
     .catch(error => {
       console.error('Error:', error);
@@ -23,6 +46,8 @@ function apirequest(address) {
     var element = document.getElementById('randsprite');
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
     var req = apiUrl.concat(randonmon());
+    console.log("Hello" + randonmon());
+
     //
     fetch(req)
     .then(response => {
