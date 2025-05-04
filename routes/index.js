@@ -6,4 +6,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+
+router.get('/quiz.html', function(req, res) {
+
+
+});
+
+
 module.exports = router;
