@@ -1,5 +1,5 @@
 // Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
-function randonmon() {
+function randomMon() {
     const test = 'https://pokeapi.co/api/v2/pokemon/';
     var randmon = "";
     fetch(test)
@@ -70,7 +70,8 @@ function apirequest(address) {
 
 const pokemon = [];
 pokemon.push("charmander", "bulbasaur", "pikachu", "ditto", "mew")
-apirequest(pokemon[Math.floor(Math.random()*5)])
+//apirequest(pokemon[Math.floor(Math.random()*5)])
+randomMon();
 
 
 
