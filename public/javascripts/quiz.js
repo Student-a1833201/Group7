@@ -1,7 +1,6 @@
 function quizgen() {
     var element = document.getElementById('randsprite');
-
-    var xhttp = new XMLHttpRequest();
+    /*    var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
@@ -10,4 +9,5 @@ function quizgen() {
 
     xhttp.open("GET", "/quiz.txt", true);
     xhttp.send();
+    */
 }
