@@ -1,28 +1,48 @@
+function apirequest(address) {
+    const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+    const req = apiUrl.concat(address);
+
+    fetch(req)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      var element = document.getElementById('randsprite');
+      element.src = data.sprites.front_default;
+      element.alt = data.forms[0].name;
+      console.log(data.sprites.front_default);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
+
+const req = apiUrl.concat(pokemon[Math.floor(Math.random()*5)]);
+
 const pokemon = [];
 pokemon.push("charmander", "bulbasaur", "pikachu", "ditto", "mew")
 
 // Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
 
+
+
+
+
+
+
+
+
+
 // Define the API URL
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
 const req = apiUrl.concat(pokemon[Math.floor(Math.random()*5)]);
 // Make a GET request
-fetch(req)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    var element = document.getElementById('randsprite');
-    element.src = data.sprites.front_default;
-    element.alt = data.forms[0].name;
-    console.log(data.sprites.front_default);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+
 
 /*
 var initial = 0;
