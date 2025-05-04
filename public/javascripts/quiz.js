@@ -1,3 +1,5 @@
+const Pokemon 
+
 // Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
 
 // Define the API URL
