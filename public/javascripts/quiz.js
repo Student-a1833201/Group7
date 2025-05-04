@@ -1,4 +1,24 @@
 // Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
+function randmonmon() {
+    const test = 'https://pokeapi.co/api/v2/pokemon/';
+    var randmon = "";
+    fetch(test)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+
+    })
+    .then(data => {
+      return(data.results[Math.floor(Math.random()*20)].name);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
 function apirequest(address) {
     const test = 'https://pokeapi.co/api/v2/pokemon/';
     var randmon = "";
