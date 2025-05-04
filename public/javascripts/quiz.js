@@ -11,7 +11,7 @@ function randmon() {
 
     })
     .then(data => {
-        //console.log(data.results[Math.floor(Math.random()*20)].name);
+        console.log(data.results[Math.floor(Math.random()*20)].name);
         return JSON.stringify(data.results[Math.floor(Math.random()*20)].name);
 
 
@@ -47,11 +47,12 @@ function apirequest(address) {
 
 }
 
+console.log(randmon());
+
 const pokemon = [];
 pokemon.push("charmander", "bulbasaur", "pikachu", "ditto", "mew")
 apirequest(pokemon[Math.floor(Math.random()*5)])
 
-console.log(randmon());
 
 
 
