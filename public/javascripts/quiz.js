@@ -1,13 +1,13 @@
-const Pokemon = [];
-pokmeon.push("charmander", "bulbasaur", "pikachu", "ditto", "mew")
+const pokemon = [];
+pokemon.push("charmander", "bulbasaur", "pikachu", "ditto", "mew")
 
 // Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
 
 // Define the API URL
-const apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto';
-
+const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+const req = apiUrl.concat(pokemon[Math.floor(Math.random()*5)]);
 // Make a GET request
-fetch(apiUrl)
+fetch(req)
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
