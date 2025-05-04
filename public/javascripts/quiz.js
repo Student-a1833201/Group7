@@ -1,5 +1,5 @@
-// Currently just testing
-/*
+// Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
+
 // Define the API URL
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto';
 
@@ -12,15 +12,16 @@ fetch(apiUrl)
     return response.json();
   })
   .then(data => {
-
+    var element = document.getElementById('randsprite');
+    element.src = data.sprites.front_default;
+    element.alt = data.forms[0].name;
     console.log(data.sprites.front_default);
   })
   .catch(error => {
     console.error('Error:', error);
   });
-  */
 
-  var time = new Date();
+/*
 var initial = 0;
 
 function fourone() {
@@ -44,10 +45,11 @@ function fourone() {
         } else {
             // Blank
         }
-        */
+
     };
 
     xhttp.open("GET", "/last.txt", true);
 
     xhttp.send();
 }
+*/
