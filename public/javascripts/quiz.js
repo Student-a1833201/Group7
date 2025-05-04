@@ -1,5 +1,5 @@
 // Currently just testing - https://www.freecodecamp.org/news/make-api-calls-in-javascript/
-function randonmon() {
+function randmon() {
     const test = 'https://pokeapi.co/api/v2/pokemon/';
     var randmon = "";
     fetch(test)
@@ -11,7 +11,7 @@ function randonmon() {
 
     })
     .then(data => {
-        console.log(data.results[Math.floor(Math.random()*20)].name);
+        //console.log(data.results[Math.floor(Math.random()*20)].name);
         return JSON.stringify(data.results[Math.floor(Math.random()*20)].name);
 
 
@@ -26,8 +26,7 @@ function randonmon() {
 function apirequest(address) {
     var element = document.getElementById('randsprite');
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
-    var req = apiUrl.concat(randonmon());
-    console.log("Hello" + randonmon());
+    var req = apiUrl.concat(address);
 
     //
     fetch(req)
@@ -53,6 +52,7 @@ const pokemon = [];
 pokemon.push("charmander", "bulbasaur", "pikachu", "ditto", "mew")
 apirequest(pokemon[Math.floor(Math.random()*5)])
 
+printf(randmon());
 
 
 
@@ -64,8 +64,8 @@ apirequest(pokemon[Math.floor(Math.random()*5)])
 
 
 // Define the API URL
-const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
-const req = apiUrl.concat(pokemon[Math.floor(Math.random()*5)]);
+//const apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
+//const req = apiUrl.concat(pokemon[Math.floor(Math.random()*5)]);
 // Make a GET request
 
 
