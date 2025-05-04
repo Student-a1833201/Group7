@@ -12,6 +12,7 @@ fetch(apiUrl)
     return response.json();
   })
   .then(data => {
+    
     console.log(data.sprites.front_default);
   })
   .catch(error => {
