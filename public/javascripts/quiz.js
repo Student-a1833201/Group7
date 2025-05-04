@@ -47,7 +47,8 @@ function apirequest(address) {
 
 }
 
-console.log(JSON.stringify(randmon()));
+//console.log(JSON.stringify(randmon()));
+randmon();
 
 const pokemon = [];
 pokemon.push("charmander", "bulbasaur", "pikachu", "ditto", "mew")
