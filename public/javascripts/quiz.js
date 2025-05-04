@@ -1,5 +1,5 @@
 // Currently just testing
-
+/*
 // Define the API URL
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto';
 
@@ -12,9 +12,10 @@ fetch(apiUrl)
     return response.json();
   })
   .then(data => {
-    
+
     console.log(data.sprites.front_default);
   })
   .catch(error => {
     console.error('Error:', error);
   });
+  */
