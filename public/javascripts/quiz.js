@@ -20,7 +20,7 @@ function apirequest(address) {
       console.error('Error:', error);
     });
 
-    const test = 'https://pokeapi.co/api/v2/pokemon/cha';
+    const test = 'https://pokeapi.co/api/v2/pokemon/';
 
     fetch(test)
     .then(response => {
