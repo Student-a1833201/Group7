@@ -89,12 +89,19 @@ var element = document.getElementById('search');
 element.addEventListener('mouseover', showNextMon);
 
 function getNextMon() {
+    var monname = "hello";
+
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         if (this.responseText != "") {
             //console.log(this.responseText)
             var data = JSON.parse(this.responseText);
+
+            for (let i = 0; i < 1025; i++) {
+                monname = data.results[i].name;
+                monname = monname.substr(0,)
+            }
             console.log(data.results[Math.floor(Math.random()*1025)].name);
             callback(data.results[Math.floor(Math.random()*1025)].name);
         }
