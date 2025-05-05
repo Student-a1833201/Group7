@@ -5,6 +5,7 @@ function quizgen() {
 
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
+        console.log("hit");
         element.src = this.responseText;
     };
 
