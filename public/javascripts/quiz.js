@@ -87,13 +87,12 @@ function questionGen(name) {
             sprite.style.display = "none";
         }
 
-        var sprite = document.getElementById('randsprite');
+        var type = document.getElementsByClassName('type');
         if (score < 7) {
-            var sprite = document.getElementById('randsprite');
             sprite.src = data.sprites.front_default;
         } else {
-            sprite.style.display = "none";
-            sprite.style.display = "none";
+            type[0].style.display = "none";
+            type[1].style.display = "none";
 
         }
 
