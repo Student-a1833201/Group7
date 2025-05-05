@@ -8,9 +8,14 @@ router.get('/', function(req, res, next) {
 
 
 var currentans = "Latias";
-router.get('/currentquiz.txt', function(req, res) {
-  res.send("./images/Test.png");
+router.get('/currentquiz/', function(req, res) {
+  res.send(currentans);
 });
+
+router.get('/currentquiz/', function(req, res) {
+  res.send(currentans);
+});
+
 
 
 module.exports = router;
