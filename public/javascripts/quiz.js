@@ -89,7 +89,8 @@ function questionGen(name) {
 
         var type = document.getElementsByClassName('type');
         if (score < 7) {
-            sprite.src = data.sprites.front_default;
+            type[0].src = data.types[1];
+            type[0].alt =
         } else {
             type[0].style.display = "none";
             type[1].style.display = "none";
