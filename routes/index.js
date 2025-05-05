@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 
 var currentans = "Latias";
-router.get('/currentquiz/', function(req, res) {
+router.get('/currentquiz.txt', function(req, res) {
   res.send(currentans);
 });
 
