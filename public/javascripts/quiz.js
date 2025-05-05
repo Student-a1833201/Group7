@@ -104,6 +104,12 @@ function getNextMon() {
     var element = document.getElementById('search');
     var element2 = document.getElementByClassName('result');
 
+    // Sets list to hide by default
+    element2[0].style.display = "none";
+    element2[1].style.display = "none";
+    element2[2].style.display = "none";
+
+
     var search = element.value;
     var monname = "hello";
     var result = false;
@@ -122,8 +128,9 @@ function getNextMon() {
                 console.log(monname);
                 if (monname == search) {
                     if (num != 3) {
-                        element2[].style.display = "inital";
-                        element2.innerText = data.results[i].name;
+                        element2[num].style.display = "inital";
+                        element2[num].innerText = data.results[i].name;
+                        num++
                         result = true;
                         break;
                     }
@@ -131,7 +138,8 @@ function getNextMon() {
             }
 
             if (result = false) {
-                element2.innerText = "No Results";
+                element2[0].style.display = "inital";
+                element2[0].innerText = "No Results";
             }
         }
     };
