@@ -88,6 +88,11 @@ function questionGen() {
     xhttp.send();
 }
 
+
+function questionGen() {
+
+}
+
 function getRandQuizMon(callback) {
     var xhttp = new XMLHttpRequest();
 
@@ -97,7 +102,6 @@ function getRandQuizMon(callback) {
             var data = JSON.parse(this.responseText);
             console.log(data.results[Math.floor(Math.random()*1025)].name);
             callback(data.results[Math.floor(Math.random()*1025)].name);
-
         }
     };
 
