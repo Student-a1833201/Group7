@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-
+/*
 var currentans = "Latias";
 router.get('/currentquiz.txt', function(req, res) {
   console.log("out");
@@ -18,7 +18,7 @@ router.get('/newmon/:mon', function(req, res) {
 
   res.send("Abc");
 });
-
+*/
 
 
 
