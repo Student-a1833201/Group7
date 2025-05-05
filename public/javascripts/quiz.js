@@ -8,7 +8,7 @@ function quizgen() {
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
         var test = getAPI();
-        element.src = this.responseText;
+        //element.src = this.responseText;
     };
 
     xhttp.open("GET", "/quiz.txt", true);
@@ -23,8 +23,8 @@ function getAPI() {
 
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
-        var data = JSON.parse()
-        element.src = this.responseText;
+        var data = JSON.parse(this.responseText)
+        element.src = data.sprites.front_default;
     };
 
     xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon/ditto", true);
