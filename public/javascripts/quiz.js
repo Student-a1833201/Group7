@@ -80,18 +80,21 @@ function questionGen(name) {
     xhttp.onreadystatechange = function() {
         var data = JSON.parse(this.responseText);
 
+        var sprite = document.getElementById('randsprite');
         if (score < 3) {
-            var sprite = document.getElementById('randsprite');
             sprite.src = data.sprites.front_default;
         } else {
             sprite.style.display = "none";
         }
 
+        var sprite = document.getElementById('randsprite');
         if (score < 7) {
             var sprite = document.getElementById('randsprite');
             sprite.src = data.sprites.front_default;
         } else {
             sprite.style.display = "none";
+            sprite.style.display = "none";
+
         }
 
 
