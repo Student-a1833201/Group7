@@ -12,7 +12,7 @@ router.get('/currentquiz/', function(req, res) {
   res.send(currentans);
 });
 
-router.get('/currentquiz/', function(req, res) {
+router.get('/newmon/:mon', function(req, res) {
   res.send(currentans);
 });
 
