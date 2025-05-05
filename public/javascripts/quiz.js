@@ -74,6 +74,8 @@ function getNextMon() {
 }
 
 function questionGen() {
+    var randmon = apiAddress.concat(quizmon);
+
     var element = document.getElementById('test');
 
     var xhttp = new XMLHttpRequest();
@@ -83,14 +85,9 @@ function questionGen() {
 
     };
 
-    xhttp.open("GET", "/last.txt", true);
+    xhttp.open("GET", randmon, true);
 
     xhttp.send();
-}
-
-
-function questionGen() {
-
 }
 
 function getRandQuizMon(callback) {

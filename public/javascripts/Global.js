@@ -1,7 +1,7 @@
 function getAPI(Pokemon) {
   var randmon = apiAddress.concat(Pokemon);
   //var randmon = apiAddress.concat("ditto");
-  console.log(randmon);
+  //console.log(randmon);
   var element = document.getElementById('randsprite');
 
   var xhttp = new XMLHttpRequest();
