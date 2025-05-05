@@ -86,7 +86,7 @@ function getAPI() {
 
 // Time to actually Get started
 var element = document.getElementById('search');
-element.addEventListener('mouseover', showNextMon);
+element.addEventListener('input', showNextMon);
 
 function getNextMon() {
     console.log("call");
