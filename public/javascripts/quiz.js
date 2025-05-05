@@ -89,6 +89,7 @@ var element = document.getElementById('search');
 element.addEventListener('mouseover', showNextMon);
 
 function getNextMon() {
+    console.log("call");
     var element = document.getElementById('search');
     var element2 = document.getElementById('result');
 
@@ -105,12 +106,12 @@ function getNextMon() {
             for (let i = 0; i < 1025; i++) {
                 monname = data.results[i].name;
                 monname = monname.substr(0,search.length);
+                console.log(monname);
                 if (monname == search) {
-                    element.innerText = data.results[i].name;
+                    element2.innerText = data.results[i].name;
+                    break;
                 }
             }
-            console.log(data.results[Math.floor(Math.random()*1025)].name);
-            callback(data.results[Math.floor(Math.random()*1025)].name);
         }
     };
 
