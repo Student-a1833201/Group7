@@ -19,8 +19,7 @@ function quizgen() {
 }
 
 function getAPI() {
-    var randmon = "https://pokeapi.co/api/v2/pokemon/"
-    var
+    var randmon = apiAddress.concat(getRandMon());
     var element = document.getElementById('randsprite');
 
     var xhttp = new XMLHttpRequest();
@@ -31,7 +30,7 @@ function getAPI() {
         element.src = data.sprites.front_default;
     };
 
-    xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon/ditto", true);
+    xhttp.open("GET", randmon, true);
     xhttp.send();
 
 }
