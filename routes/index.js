@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/quiz.txt', function(req, res) {
   const apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto';
-  /*
+
   // Make a GET request
   fetch(apiUrl)
     .then(response => {
@@ -24,10 +24,10 @@ router.get('/quiz.txt', function(req, res) {
     })
     .catch(error => {
       console.error('Error:', error);
+      res.send("./images/Test.png");
     });
 
-  */
-  res.send("./images/Test.png");
+
 
 });
 
