@@ -18,13 +18,10 @@ function init() {
 function fill(listnum) {
     var element2 = document.getElementsByClassName('result');
     var element = document.getElementById('search');
-    console.log("test");
     element.value = element2[listnum].innerText
 }
 
 function getNextMon() {
-    console.log("call");
-
     var element = document.getElementById('search');
     var element2 = document.getElementsByClassName('result');
 
@@ -73,6 +70,7 @@ function getNextMon() {
     xhttp.send();
 }
 
+
 function questionGen(name) {
     var randmon = apiAddress.concat(name);
 
@@ -114,7 +112,7 @@ function getRandQuizMon(callback) {
         if (this.responseText != "") {
             //console.log(this.responseText)
             var data = JSON.parse(this.responseText);
-            console.log(data.results[Math.floor(Math.random()*1025)].name);
+            //console.log(data.results[Math.floor(Math.random()*1025)].name);
             callback(data.results[Math.floor(Math.random()*1025)].name);
         }
     };
@@ -131,7 +129,7 @@ function getRandQuizMon(callback) {
         if (this.responseText != "") {
             //console.log(this.responseText)
             var data = JSON.parse(this.responseText);
-            console.log(data.results[Math.floor(Math.random()*1025)].name);
+            //console.log(data.results[Math.floor(Math.random()*1025)].name);
             callback(data.results[Math.floor(Math.random()*1025)].name);
 
             // Quiz Parameters
