@@ -86,4 +86,21 @@ function getAPI() {
 
 // Time to actually Get started
 var element = document.getElementById('search');
-element.addEventListener('mouseover', shownextmon);
+element.addEventListener('mouseover', showNextMon);
+
+function getNextMon() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.responseText != "") {
+            //console.log(this.responseText)
+            var data = JSON.parse(this.responseText);
+            console.log(data.results[Math.floor(Math.random()*1025)].name);
+            callback(data.results[Math.floor(Math.random()*1025)].name);
+        }
+    };
+
+    xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0", true);
+    xhttp.send();
+
+}
