@@ -98,7 +98,7 @@ function init() {
 
 function getNextMon() {
     console.log("call");
-    /*
+
     var element = document.getElementById('search');
     var element2 = document.getElementById('result');
 
@@ -126,6 +126,6 @@ function getNextMon() {
 
     xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0", true);
     xhttp.send();
-    */
+    
 
 }
