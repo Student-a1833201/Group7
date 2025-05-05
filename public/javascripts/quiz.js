@@ -90,6 +90,8 @@ element.addEventListener('mouseover', showNextMon);
 
 function getNextMon() {
     var element = document.getElementById('search');
+    var element2 = document.getElementById('result');
+
     var search = element.value;
     var monname = "hello";
 
@@ -103,7 +105,9 @@ function getNextMon() {
             for (let i = 0; i < 1025; i++) {
                 monname = data.results[i].name;
                 monname = monname.substr(0,search.length);
-                if (monname)
+                if (monname == search) {
+                    element.innerText = data.results[i].name;
+                }
             }
             console.log(data.results[Math.floor(Math.random()*1025)].name);
             callback(data.results[Math.floor(Math.random()*1025)].name);
