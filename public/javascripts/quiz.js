@@ -88,7 +88,7 @@ function questionGen() {
     xhttp.send();
 }
 
-function getRandMon(callback) {
+function getRandQuizMon(callback) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
