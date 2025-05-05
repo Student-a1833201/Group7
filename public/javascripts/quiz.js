@@ -77,6 +77,7 @@ function questionGen(name) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
+        console.log("Here");
         var data = JSON.parse(this.responseText);
 
         var sprite = document.getElementById('randsprite');
