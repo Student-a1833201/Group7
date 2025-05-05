@@ -41,12 +41,10 @@ function getNextMon() {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
-        console.log("Append");
-
         if (this.responseText != "") {
             //console.log(this.responseText)
             var data = JSON.parse(this.responseText);
-
+            // Searches if substring matches a pokemon
             for (let i = 0; i < 1025; i++) {
                 monname = data.results[i].name;
                 monname = monname.substr(0,search.length);
@@ -54,7 +52,6 @@ function getNextMon() {
                     if (num != 3) {
                         element2[num].style.display = "inital";
                         element2[num].innerText = data.results[i].name;
-                        console.log(num);
                         num++
                         result = true;
                         //break;
@@ -71,6 +68,7 @@ function getNextMon() {
         }
     };
 
+    // Sources list of pokemon
     xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0", true);
     xhttp.send();
 }
