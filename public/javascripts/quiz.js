@@ -7,6 +7,7 @@ function quizgen() {
 
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
+        getAPI();
         console.log(num);
         element.src = this.responseText;
     };
@@ -14,4 +15,24 @@ function quizgen() {
     xhttp.open("GET", "/quiz.txt", true);
     xhttp.send();
 
+}
+
+function getAPI() {
+    const apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto';
+
+    fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data.sprites.front_default);
+    })
+    .catch(error => {
+        console.log("no");
+
+      console.error('Error:', error);
+    });
 }
