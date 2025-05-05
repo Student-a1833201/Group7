@@ -9,11 +9,15 @@ router.get('/', function(req, res, next) {
 
 var currentans = "Latias";
 router.get('/currentquiz.txt', function(req, res) {
-  res.send(currentans);
+  console.log("out");
+  res.send("ABC");
 });
 
 router.get('/newmon/:mon', function(req, res) {
-  res.send(currentans);
+  currentans = req.params.mon;
+  console.log(currentans);
+
+  //res.send(currentans);
 });
 
 

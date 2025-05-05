@@ -131,8 +131,11 @@ function getRandQuizMon(callback, callback2) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
-
+        console.log("Confirm");
     };
+
+    var dir = "/newmon/:mon";
+    dir = dir.concat(curmon);
 
     xhttp.open("GET", "/color.txt", true);
 
@@ -144,6 +147,7 @@ function getRandQuizMon(callback, callback2) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
+        console.log(this.responseText);
         if (document.getElementById('search').value == this.responseText) {
             score++;
             console.log("correct");
