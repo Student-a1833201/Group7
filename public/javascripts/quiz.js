@@ -83,3 +83,7 @@ function getAPI() {
     return test;
 }
     */
+
+// Time to actually Get started
+var element = document.getElementById('mcount');
+element.addEventListener('mouseover', update);
