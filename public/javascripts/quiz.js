@@ -20,7 +20,7 @@ function quizgen() {
 
 function getAPI() {
     const apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto';
-
+    var test = ""
     fetch(apiUrl)
     .then(response => {
       if (!response.ok) {
@@ -30,11 +30,15 @@ function getAPI() {
     })
     .then(data => {
       console.log(data.sprites.front_default);
-      return "Hello";
+      test = data.sprites.front_default;
     })
     .catch(error => {
         console.log("no");
 
       console.error('Error:', error);
     });
+
+    return test;
+    return "Hello";
+
 }
