@@ -16,18 +16,14 @@ function quizgen() {
 
 }
 
-var num = 0;
 function getAPI() {
-    num++;
     var element = document.getElementById('randsprite');
 
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
-        var test = getAPI();
-        console.log(test);
-        console.log(num);
+        var data = JSON.parse()
         element.src = this.responseText;
     };
 
