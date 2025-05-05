@@ -10,5 +10,5 @@ function quizgen() {
 
     xhttp.open("GET", "/quiz.txt", true);
     xhttp.send();
-    */
+
 }
