@@ -18,11 +18,9 @@ function quizgen() {
 
 }
 
-function getAPI() {
-    //var randmon = apiAddress.concat(getRandMon());
-    var randmon = apiAddress.concat("ditto");
-    console.log("Return: " + getRandMon());
-
+function getAPI(Pokemon) {
+    var randmon = apiAddress.concat(Pokemon);
+    //var randmon = apiAddress.concat("ditto");
     console.log(randmon);
     var element = document.getElementById('randsprite');
 
@@ -42,18 +40,15 @@ function getAPI() {
 
 }
 
-function getRandMon() {
-    var element = document.getElementById('randsprite');
-
+function getRandMon(callback) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
-        // Overcomplicated the heck out of this
         if (this.responseText != "") {
             //console.log(this.responseText)
             var data = JSON.parse(this.responseText);
             console.log(data.results[Math.floor(Math.random()*1025)].name);
-            return data.results[Math.floor(Math.random()*1025)].name;
+            callback(data.results[Math.floor(Math.random()*1025)].name);
         }
     };
 
