@@ -88,13 +88,13 @@ function getAPI() {
 document.addEventListener("DOMLOAD", init, false);
 
 function init() {
-
+    console.log("hello world");
     var searchbar = document.getElementById('Confirm');
     searchbar.addEventListener("click", showNextMon);
 
     var searchbar = document.getElementById('search');
     searchbar.addEventListener("change", showNextMon);
-    }
+};
 
 function getNextMon() {
     console.log("call");
