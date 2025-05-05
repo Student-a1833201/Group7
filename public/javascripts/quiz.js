@@ -86,7 +86,7 @@ function getAPI() {
 
 // Time to actually Get started
 var searchbar = document.getElementById('Confirm');
-searchbar.addEventListener("input", showNextMon);
+searchbar.addEventListener("click", showNextMon);
 
 var searchbar = document.getElementById('search');
 searchbar.addEventListener("input", showNextMon);
