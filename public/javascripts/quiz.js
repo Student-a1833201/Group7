@@ -20,7 +20,7 @@ function quizgen() {
 
 function getAPI() {
     //var randmon = apiAddress.concat(getRandMon());
-        //var randmon = apiAddress.concat(getRandMon());
+    var randmon = apiAddress.concat("ditto");
 
     console.log(randmon);
     var element = document.getElementById('randsprite');
