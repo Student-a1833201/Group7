@@ -73,8 +73,8 @@ function getNextMon() {
     xhttp.send();
 }
 
-function questionGen() {
-    var randmon = apiAddress.concat(quizmon);
+function questionGen(name) {
+    var randmon = apiAddress.concat(name);
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
@@ -86,6 +86,14 @@ function questionGen() {
         } else {
             sprite.style.display = "none";
         }
+
+        if (score < 7) {
+            var sprite = document.getElementById('randsprite');
+            sprite.src = data.sprites.front_default;
+        } else {
+            sprite.style.display = "none";
+        }
+
 
     };
 
