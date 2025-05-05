@@ -136,9 +136,13 @@ function getNextMon() {
                         element2[num].innerText = data.results[i].name;
                         num++
                         result = true;
-                        break;
+                        //break;
                     }
                 }
+            }
+
+            if (num < 3) {
+                
             }
 
             if (result = false) {
