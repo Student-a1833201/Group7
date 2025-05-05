@@ -76,7 +76,6 @@ function getNextMon() {
 function questionGen() {
     var randmon = apiAddress.concat(quizmon);
 
-    var element = document.getElementById('test');
 
     var xhttp = new XMLHttpRequest();
 
