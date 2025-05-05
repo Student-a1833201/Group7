@@ -102,10 +102,10 @@ function getNextMon() {
     console.log("call");
 
     var element = document.getElementById('search');
-    var element2 = document.getElementById('result');
 
     var search = element.value;
     var monname = "hello";
+    var result = false;
 
     var xhttp = new XMLHttpRequest();
 
@@ -119,9 +119,15 @@ function getNextMon() {
                 monname = monname.substr(0,search.length);
                 console.log(monname);
                 if (monname == search) {
+                    var element2 = document.getElementByClass('result');
                     element2.innerText = data.results[i].name;
+                    result = true;
                     break;
                 }
+            }
+
+            if (result = false) {
+                element2.innerText = "No Results";
             }
         }
     };
