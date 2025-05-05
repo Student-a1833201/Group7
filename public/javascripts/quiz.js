@@ -107,7 +107,7 @@ function questionGen(name) {
     xhttp.send();
 }
 
-function getRandQuizMon(callback) {
+function getRandQuizMon(callback, callback2) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
@@ -116,7 +116,9 @@ function getRandQuizMon(callback) {
             var data = JSON.parse(this.responseText);
             //console.log(data.results[Math.floor(Math.random()*1025)].name);
             console.log("Hello World");
-            callback(data.results[Math.floor(Math.random()*1025)].name);
+            var qmon = data.results[Math.floor(Math.random()*1025)].name;
+            callback(qmon);
+            callback2(qmon);
         }
     };
 
