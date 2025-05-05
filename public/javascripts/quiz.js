@@ -7,7 +7,8 @@ function quizgen() {
 
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
-        getAPI();
+        var test = getAPI();
+        console.log(test);
         console.log(num);
         element.src = this.responseText;
     };
@@ -29,6 +30,7 @@ function getAPI() {
     })
     .then(data => {
       console.log(data.sprites.front_default);
+      return "Hello";
     })
     .catch(error => {
         console.log("no");
