@@ -141,14 +141,11 @@ function getNextMon() {
                 }
             }
 
-            if (num < 3) {
-                
+            while (num < 3) {
+                element2[num].style.display = "none";
+                num++;
             }
 
-            if (result = false) {
-                element2[0].style.display = "inital";
-                element2[0].innerText = "No Results";
-            }
         }
     };
 
