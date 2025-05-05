@@ -107,6 +107,7 @@ function getNextMon() {
     var search = element.value;
     var monname = "hello";
     var result = false;
+    var num = 0;
 
     var xhttp = new XMLHttpRequest();
 
@@ -120,10 +121,12 @@ function getNextMon() {
                 monname = monname.substr(0,search.length);
                 console.log(monname);
                 if (monname == search) {
-                    element2.style.display = inital;
-                    element2.innerText = data.results[i].name;
-                    result = true;
-                    break;
+                    if (num != 3) {
+                        element2[].style.display = "inital";
+                        element2.innerText = data.results[i].name;
+                        result = true;
+                        break;
+                    }
                 }
             }
 
