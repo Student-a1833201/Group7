@@ -93,6 +93,9 @@ function questionGen(name) {
         if (score < 7) {
             type[0].src = typeAddress.concat(data.types[0].type.name,".png");
             type[0].alt = data.types[0].type.name
+
+            type[1].src = typeAddress.concat(data.types[1].type.name ||,".png");
+            type[1].alt = data.types[0].type.name || "N/A";
         } else {
             type[0].style.display = "none";
             type[1].style.display = "none";
