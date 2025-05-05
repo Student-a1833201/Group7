@@ -75,12 +75,10 @@ function getNextMon() {
 
 function questionGen() {
     var randmon = apiAddress.concat(quizmon);
-
-
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
-        element.innerText = this.responseText;
+        var data = JSON.parse(this.responseText);
 
     };
 
