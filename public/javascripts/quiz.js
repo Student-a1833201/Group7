@@ -137,7 +137,7 @@ function getRandQuizMon(callback, callback2) {
     var dir = "/newmon/:mon";
     dir = dir.concat(curmon);
 
-    xhttp.open("GET", "/color.txt", true);
+    xhttp.open("GET", dir, true);
 
     xhttp.send();
 }
