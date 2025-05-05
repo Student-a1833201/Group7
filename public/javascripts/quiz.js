@@ -131,9 +131,9 @@ function getNextMon() {
 
                 if (monname == search) {
                     if (num != 3) {
-                        console.log(num);
                         element2[num].style.display = "inital";
                         element2[num].innerText = data.results[i].name;
+                        console.log(num);
                         num++
                         result = true;
                         //break;
