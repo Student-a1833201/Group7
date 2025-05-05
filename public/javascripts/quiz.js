@@ -75,6 +75,7 @@ function getNextMon() {
 
 function questionGen(name) {
     var randmon = apiAddress.concat(name);
+
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
@@ -87,10 +88,11 @@ function questionGen(name) {
             sprite.style.display = "none";
         }
 
+        var trypAddress = 
         var type = document.getElementsByClassName('type');
         if (score < 7) {
-            type[0].src = data.types[1];
-            type[0].alt =
+            type[0].src = data.types[1].type.name;
+            type[0].alt = data.types[1].type.name
         } else {
             type[0].style.display = "none";
             type[1].style.display = "none";
