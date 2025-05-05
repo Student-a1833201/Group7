@@ -1,3 +1,5 @@
+const apiAddress = "https://pokeapi.co/api/v2/pokemon/"
+
 var num = 0;
 function quizgen() {
     num++;
@@ -17,7 +19,8 @@ function quizgen() {
 }
 
 function getAPI() {
-    var randmon = 
+    var randmon = "https://pokeapi.co/api/v2/pokemon/"
+    var
     var element = document.getElementById('randsprite');
 
     var xhttp = new XMLHttpRequest();
