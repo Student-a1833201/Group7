@@ -126,10 +126,12 @@ function getRandQuizMon(callback) {
   }
 
   function validate(callback) {
-    console.log("guess")
+    console.log(quizmon);
     if (document.getElementById('search').value == quizmon) {
         score++;
         console.log("correct");
         callback(questionGen);
-    } else 
+    } else {
+        console.log("Wrong");
+    }
   }
