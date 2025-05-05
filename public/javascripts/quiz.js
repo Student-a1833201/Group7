@@ -29,8 +29,11 @@ function getAPI() {
 
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
-        var data = JSON.parse(this.responseText);
-        element.src = data.sprites.front_default;
+        if (this.responseText != "") {
+            console.log("Printing: " + this.responseText);
+            var data = JSON.parse(this.responseText);
+            element.src = data.sprites.front_default;
+        }
     };
 
     xhttp.open("GET", randmon, true);
@@ -39,17 +42,16 @@ function getAPI() {
 }
 
 function getRandMon() {
-    var test = 0;
     var element = document.getElementById('randsprite');
 
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
-        console.log(this.responseText)
-        var data = JSON.parse(this.responseText);
-        if (test == 2) {
-            return data.results[Math.floor(Math.random()*1025)].name
+        if (this.responseText != "") {
+            console.log(this.responseText)
+            var data = JSON.parse(this.responseText);
+            return data.results[Math.floor(Math.random()*1025)].name;
         }
         test++
     };
