@@ -19,7 +19,7 @@ function quizgen() {
 }
 
 function getAPI() {
-    //var randmon = apiAddress.concat(getRandMon());
+    var randmon = apiAddress.concat(getRandMon());
     var randmon = apiAddress.concat("ditto");
 
     console.log(randmon);
@@ -29,7 +29,7 @@ function getAPI() {
 
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
-        var data = JSON.parse(this.responseText)
+        var data = JSON.parse(this.responseText);
         element.src = data.sprites.front_default;
     };
 
@@ -47,7 +47,7 @@ function getRandMon() {
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
         console.log(this.responseText)
-        var data = JSON.parse(this.responseText)
+        var data = JSON.parse(this.responseText);
         if (test == 2) {
             return data.results[Math.floor(Math.random()*1025)].name
         }
