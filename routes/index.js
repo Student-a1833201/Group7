@@ -27,7 +27,7 @@ router.get('/quiz.txt', function(req, res) {
     });
 
   */
-    res.send("./images/Test.png");
+  res.send("./images/Test.png");
 
 });
 
