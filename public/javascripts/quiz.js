@@ -89,7 +89,7 @@ var searchbar = document.getElementById('Confirm');
 searchbar.addEventListener("click", showNextMon);
 
 var searchbar = document.getElementById('search');
-searchbar.addEventListener("input", showNextMon);
+searchbar.addEventListener("change", showNextMon);
 
 function getNextMon() {
     console.log("call");
