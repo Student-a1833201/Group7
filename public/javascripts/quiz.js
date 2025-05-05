@@ -83,7 +83,8 @@ function questionGen() {
         if (score < 3) {
             var sprite = document.getElementById('randsprite');
             sprite.src = data.sprites.front_default;
-
+        } else {
+            sprite.style.display = "none";
         }
 
     };
