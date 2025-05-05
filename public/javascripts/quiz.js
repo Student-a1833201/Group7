@@ -102,12 +102,12 @@ function getNextMon() {
     console.log("call");
 
     var element = document.getElementById('search');
-    var element2 = document.getElementByClassName('result');
+    var element2 = document.getElementsByClassName('result');
 
     // Sets list to hide by default
-    element2[0].style.display = "none";
-    element2[1].style.display = "none";
-    element2[2].style.display = "none";
+    //element2[0].style.display = "none";
+    //element2[1].style.display = "none";
+    //element2[2].style.display = "none";
 
     var search = element.value;
     var monname = "hello";
@@ -126,12 +126,12 @@ function getNextMon() {
             for (let i = 0; i < 1025; i++) {
                 monname = data.results[i].name;
                 monname = monname.substr(0,search.length);
-                console.log(monname);
-                console.log("Append");
+                //console.log(monname);
+                //console.log("Append");
 
                 if (monname == search) {
-                    var num = 0;
                     if (num != 3) {
+                        console.log(num);
                         element2[num].style.display = "inital";
                         element2[num].innerText = data.results[i].name;
                         num++
