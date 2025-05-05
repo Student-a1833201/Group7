@@ -127,6 +127,19 @@ function getRandQuizMon(callback, callback2) {
 
   }
 
+  function savemon(curmon) {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+
+    };
+
+    xhttp.open("GET", "/color.txt", true);
+
+    xhttp.send();
+}
+  }
+
   function validate(callback) {
     console.log(quizmon);
     if (document.getElementById('search').value == quizmon) {
