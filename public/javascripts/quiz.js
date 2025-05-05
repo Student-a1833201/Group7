@@ -1,3 +1,6 @@
+var quizmon;
+var score;
+
 // Event Listeners are being weird
 /*
 document.addEventListener("DOMLOAD", init, false);
@@ -47,9 +50,6 @@ function getNextMon() {
             for (let i = 0; i < 1025; i++) {
                 monname = data.results[i].name;
                 monname = monname.substr(0,search.length);
-                //console.log(monname);
-                //console.log("Append");
-
                 if (monname == search) {
                     if (num != 3) {
                         element2[num].style.display = "inital";
@@ -62,6 +62,7 @@ function getNextMon() {
                 }
             }
 
+            // Hides options if not necessary
             while (num < 3) {
                 element2[num].style.display = "none";
                 num++;
@@ -72,6 +73,33 @@ function getNextMon() {
 
     xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0", true);
     xhttp.send();
+}
 
+function fourone() {
+    var element = document.getElementById('test');
 
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        // Overcomplicated the heck out of this
+        element.innerText = this.responseText;
+
+        /*
+        if (this.readyState == 4 && this.status == 200) {
+            if (element.innerText  == "Init") {
+                time = new Date();
+                element.innerText  = "This page was last viewed " + String(time);
+            } else {
+                element.innerText  = "";
+                initial ++;
+            }
+        } else {
+            // Blank
+        }
+        */
+    };
+
+    xhttp.open("GET", "/last.txt", true);
+
+    xhttp.send();
 }
