@@ -117,6 +117,8 @@ function getNextMon() {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
+        console.log("Append");
+
         if (this.responseText != "") {
             //console.log(this.responseText)
             var data = JSON.parse(this.responseText);
@@ -125,9 +127,10 @@ function getNextMon() {
                 monname = data.results[i].name;
                 monname = monname.substr(0,search.length);
                 console.log(monname);
+                console.log("Append");
+
                 if (monname == search) {
                     var num = 0;
-                    console.log("Append");
                     if (num != 3) {
                         element2[num].style.display = "inital";
                         element2[num].innerText = data.results[i].name;
