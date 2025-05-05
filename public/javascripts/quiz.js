@@ -105,9 +105,9 @@ function getNextMon() {
     var element2 = document.getElementsByClassName('result');
 
     // Sets list to hide by default
-    //element2[0].style.display = "none";
-    //element2[1].style.display = "none";
-    //element2[2].style.display = "none";
+    element2[0].style.display = "initial";
+    element2[1].style.display = "initial";
+    element2[2].style.display = "initial";
 
     var search = element.value;
     var monname = "hello";
