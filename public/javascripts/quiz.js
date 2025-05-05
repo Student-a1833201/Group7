@@ -8,8 +8,6 @@ function quizgen() {
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
         var test = getAPI();
-        console.log(test);
-        console.log(num);
         element.src = this.responseText;
     };
 
@@ -19,7 +17,7 @@ function quizgen() {
 }
 
 var num = 0;
-function quizgen() {
+function getAPI() {
     num++;
     var element = document.getElementById('randsprite');
 
@@ -33,7 +31,7 @@ function quizgen() {
         element.src = this.responseText;
     };
 
-    xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon/ditto/sprites/front_default", true);
+    xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon/ditto", true);
     xhttp.send();
 
 }
