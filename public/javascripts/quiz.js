@@ -98,10 +98,6 @@ function getRandQuizMon(callback) {
             console.log(data.results[Math.floor(Math.random()*1025)].name);
             callback(data.results[Math.floor(Math.random()*1025)].name);
 
-            // Quiz Parameters
-            if (score < 3) {
-
-            }
         }
     };
 
@@ -110,7 +106,7 @@ function getRandQuizMon(callback) {
 
   }
 
-  function validate() {
+  function validate(callback) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
