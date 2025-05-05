@@ -32,6 +32,23 @@ function getAPI() {
 
 }
 
+function getRandMon() {
+    var element = document.getElementById('randsprite');
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        // Overcomplicated the heck out of this
+        var data = JSON.parse(this.responseText)
+        data.results[Math.floor(Math.random()*1025)].name
+        element.src = data.sprites.front_default;
+    };
+
+    xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0", true);
+    xhttp.send();
+
+}
+
 
 
 /*
