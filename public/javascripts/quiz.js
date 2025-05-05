@@ -109,7 +109,6 @@ function getNextMon() {
     element2[1].style.display = "none";
     element2[2].style.display = "none";
 
-
     var search = element.value;
     var monname = "hello";
     var result = false;
@@ -127,6 +126,8 @@ function getNextMon() {
                 monname = monname.substr(0,search.length);
                 console.log(monname);
                 if (monname == search) {
+                    var num = 0;
+                    console.log("Append");
                     if (num != 3) {
                         element2[num].style.display = "inital";
                         element2[num].innerText = data.results[i].name;
