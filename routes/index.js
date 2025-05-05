@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-var currentans = 
+var currentans = "Latias";
 router.get('/currentquiz.txt', function(req, res) {
   res.send("./images/Test.png");
 });
