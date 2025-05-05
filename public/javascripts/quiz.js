@@ -72,12 +72,13 @@ function getNextMon() {
 
 
 function questionGen(name) {
+    console.log(name);
+
     var randmon = apiAddress.concat(name);
 
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
-        console.log("Here");
         var data = JSON.parse(this.responseText);
 
         var sprite = document.getElementById('randsprite');
@@ -114,6 +115,7 @@ function getRandQuizMon(callback) {
             //console.log(this.responseText)
             var data = JSON.parse(this.responseText);
             //console.log(data.results[Math.floor(Math.random()*1025)].name);
+            console.log("Hello World");
             callback(data.results[Math.floor(Math.random()*1025)].name);
         }
     };
