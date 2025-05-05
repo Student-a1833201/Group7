@@ -80,6 +80,10 @@ function questionGen() {
     xhttp.onreadystatechange = function() {
         var data = JSON.parse(this.responseText);
 
+        if (score < 3) {
+            
+        }
+
     };
 
     xhttp.open("GET", randmon, true);
