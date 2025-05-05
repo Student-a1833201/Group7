@@ -19,7 +19,10 @@ function quizgen() {
 }
 
 function getAPI() {
-    var randmon = apiAddress.concat(getRandMon());
+    //var randmon = apiAddress.concat(getRandMon());
+        //var randmon = apiAddress.concat(getRandMon());
+
+    console.log(randmon);
     var element = document.getElementById('randsprite');
 
     var xhttp = new XMLHttpRequest();
@@ -36,14 +39,19 @@ function getAPI() {
 }
 
 function getRandMon() {
+    var test = 0;
     var element = document.getElementById('randsprite');
 
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         // Overcomplicated the heck out of this
+        console.log(this.responseText)
         var data = JSON.parse(this.responseText)
-        return data.results[Math.floor(Math.random()*1025)].name
+        if (test == 2) {
+            return data.results[Math.floor(Math.random()*1025)].name
+        }
+        test++
     };
 
     xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0", true);
