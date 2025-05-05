@@ -102,7 +102,8 @@ function getNextMon() {
 
             for (let i = 0; i < 1025; i++) {
                 monname = data.results[i].name;
-                monname = monname.substr(0,search.length)
+                monname = monname.substr(0,search.length);
+                if (monname)
             }
             console.log(data.results[Math.floor(Math.random()*1025)].name);
             callback(data.results[Math.floor(Math.random()*1025)].name);
