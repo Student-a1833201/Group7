@@ -1,3 +1,5 @@
+var apiAddress = "https://pokeapi.co/api/v2/pokemon/";
+
 function getAPI(Pokemon) {
   var randmon = apiAddress.concat(Pokemon);
   //var randmon = apiAddress.concat("ditto");

@@ -1,3 +1,4 @@
+var apiAddress = "https://pokeapi.co/api/v2/pokemon/";
 var quizmon = "";
 var score = 0;
 
@@ -80,7 +81,7 @@ function questionGen(name) {
     xhttp.onreadystatechange = function() {
         var data = JSON.parse(this.responseText);
 
-        var sprite = document.getElementById('randsprite');
+        var sprite = document.getElementById('sprite');
         if (score < 3) {
             sprite.src = data.sprites.front_default;
         } else {
