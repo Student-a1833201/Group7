@@ -7,11 +7,9 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/quiz.txt', function(req, res) {
-  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto';
-
-    res.send("./images/Test.png");
-
+var currentans = 
+router.get('/currentquiz.txt', function(req, res) {
+  res.send("./images/Test.png");
 });
 
 

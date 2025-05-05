@@ -138,15 +138,22 @@ function getRandQuizMon(callback, callback2) {
 
     xhttp.send();
 }
-  }
+
 
   function validate(callback) {
-    console.log(quizmon);
-    if (document.getElementById('search').value == quizmon) {
-        score++;
-        console.log("correct");
-        callback(questionGen);
-    } else {
-        console.log("Wrong");
-    }
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (document.getElementById('search').value == this.responseText) {
+            score++;
+            console.log("correct");
+            callback(questionGen);
+        } else {
+            console.log("Wrong");
+        }
+    };
+
+    xhttp.open("GET", "/currentquiz.txt", true);
+
+    xhttp.send();
   }
