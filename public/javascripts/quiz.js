@@ -85,7 +85,9 @@ function getAPI() {
     */
 
 // Time to actually Get started
+/*
 document.addEventListener("DOMLOAD", init, false);
+
 
 function init() {
     console.log("hello world");
@@ -94,7 +96,7 @@ function init() {
 
     var searchbar = document.getElementById('search');
     searchbar.addEventListener("change", showNextMon);
-};
+};*/
 
 function getNextMon() {
     console.log("call");
@@ -126,6 +128,6 @@ function getNextMon() {
 
     xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0", true);
     xhttp.send();
-    
+
 
 }
