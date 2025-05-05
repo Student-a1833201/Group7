@@ -88,11 +88,11 @@ function questionGen(name) {
             sprite.style.display = "none";
         }
 
-        var trypAddress = 
+        var typeAddress = "../images/types/";
         var type = document.getElementsByClassName('type');
         if (score < 7) {
-            type[0].src = data.types[1].type.name;
-            type[0].alt = data.types[1].type.name
+            type[0].src = typeAddress.concat(data.types[0].type.name,".png");
+            type[0].alt = data.types[0].type.name
         } else {
             type[0].style.display = "none";
             type[1].style.display = "none";
