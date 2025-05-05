@@ -81,7 +81,9 @@ function questionGen() {
         var data = JSON.parse(this.responseText);
 
         if (score < 3) {
-            
+            var sprite = document.getElementById('randsprite');
+            sprite.src = data.sprites.front_default;
+
         }
 
     };
