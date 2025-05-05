@@ -24,3 +24,7 @@ a {
   border: 3px;
   margin: 0px;
 }
+
+.hidden {
+  display: none;
+}
