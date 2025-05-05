@@ -101,7 +101,8 @@ function init() {
 function fill(listnum) {
     var element2 = document.getElementsByClassName('result');
     var element = document.getElementById('search');
-    element.innerText = element2[listnum].innerText
+    console.log("test");
+    element.value = element2[listnum].innerText
 }
 
 function getNextMon() {
