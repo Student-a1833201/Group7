@@ -39,6 +39,4 @@ function getAPI() {
     });
 
     return test;
-    return "Hello";
-
 }
