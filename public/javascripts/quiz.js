@@ -94,15 +94,12 @@ function questionGen(name) {
             type[0].src = typeAddress.concat(data.types[0].type.name,".png");
             type[0].alt = data.types[0].type.name
 
-            type[1].src = typeAddress.concat(data.types[1].type.name ||,".png");
-            type[1].alt = data.types[0].type.name || "N/A";
+            type[1].src = typeAddress.concat(data.types[1].type.name || "uknown",".png");
+            type[1].alt = data.types[0].type.name || "uknown";
         } else {
             type[0].style.display = "none";
             type[1].style.display = "none";
-
         }
-
-
     };
 
     xhttp.open("GET", randmon, true);
