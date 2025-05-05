@@ -98,6 +98,12 @@ function init() {
     searchbar.addEventListener("change", showNextMon);
 };*/
 
+function fill(listnum) {
+    var element2 = document.getElementsByClassName('result');
+    var element = document.getElementById('search');
+    element.innerText = element2[listnum].innerText
+}
+
 function getNextMon() {
     console.log("call");
 
