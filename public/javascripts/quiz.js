@@ -155,12 +155,11 @@ function getRandQuizMon(callback, callback2) {
 
 
   function validate(callback, param1, param2) {
-    console.log("Validation");
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         if (this.responseText != "") {
-            console.log(this.responseText);
+            console.log("Validation");
             if (document.getElementById('search').value == this.responseText) {
                 score++;
                 console.log("correct");
