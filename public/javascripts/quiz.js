@@ -140,8 +140,8 @@ function getRandQuizMon(callback, callback2) {
     //dir = dir.concat(curmon);
 
     xhttp.open("POST", "/quizans", true);
-
-    xhttp.send(JSON.stringify({ans:"test", ID: 0}));
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify({ans:curmon, ID: 0}));
 }
 
 

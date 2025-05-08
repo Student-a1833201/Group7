@@ -8,15 +8,15 @@ router.get('/', function(req, res, next) {
 
 
 var currentans = "Latias";
+
+// Returns the answer
 router.get('/currentquiz.txt', function(req, res) {
-  console.log("out");
   res.send(currentans);
 });
 
+// Updates the answer
 router.post('/quizans', function(req, res) {
   currentans = req.body.ans;
-  console.log(req.body.ans);
-
   res.send("Abc");
 });
 
