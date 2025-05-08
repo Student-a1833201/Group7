@@ -76,7 +76,7 @@ function getNextMon() {
 
 function questionGen(name) {
     var randmon = apiAddress.concat(name);
-    //console.log(randmon);
+    console.log("Test");
 
     var xhttp = new XMLHttpRequest();
 
