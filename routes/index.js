@@ -17,6 +17,7 @@ router.get('/currentquiz.txt', function(req, res) {
 // Updates the answer
 router.post('/quizans', function(req, res) {
   currentans = req.body.ans;
+  console.log(currentans);
   res.send("Abc");
 });
 
