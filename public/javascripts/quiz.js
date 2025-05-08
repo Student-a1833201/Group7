@@ -155,6 +155,7 @@ function getRandQuizMon(callback, callback2) {
 
 
   function validate(callback, param1, param2) {
+    console.log("Validation");
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
