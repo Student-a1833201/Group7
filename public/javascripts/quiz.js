@@ -114,11 +114,12 @@ function getRandQuizMon(callback, callback2) {
         if (this.responseText != "") {
             //console.log(this.responseText)
             var data = JSON.parse(this.responseText);
+            //var data = this.responseText;
             //console.log(data.results[Math.floor(Math.random()*1025)].name);
             console.log("Hello World");
             var qmon = data.results[Math.floor(Math.random()*1025)].name;
             callback(qmon);
-            callback2(qmon, );
+            callback2(qmon);
         }
     };
 
@@ -145,7 +146,7 @@ function getRandQuizMon(callback, callback2) {
 }
 
 
-  function validate(callback) {
+  function validate(callback, param1, param2) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
