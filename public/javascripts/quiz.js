@@ -158,14 +158,16 @@ function getRandQuizMon(callback, callback2) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
-        if (this.responseText != "") {
-            console.log("Validation");
-            if (document.getElementById('search').value == this.responseText) {
-                score++;
-                console.log("correct");
-                callback(param1,param2);
-            } else {
-                console.log("Wrong");
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText != "") {
+                console.log("Validation");
+                if (document.getElementById('search').value == this.responseText) {
+                    score++;
+                    console.log("correct");
+                    callback(param1,param2);
+                } else {
+                    console.log("Wrong");
+                }
             }
         }
     };
