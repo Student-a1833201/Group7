@@ -138,9 +138,9 @@ function getRandQuizMon(callback, callback2) {
     //var dir = "/newmon";
     //dir = dir.concat(curmon);
 
-    xhttp.open("POST", newmon.html?param1="+encodeURIComponent(curmon)s, true);
+    xhttp.open("POST", "quizans", true);
 
-    xhttp.send();
+    xhttp.send(JSON.stringify({param1:"value1", ID: 0}));
 }
 
 
