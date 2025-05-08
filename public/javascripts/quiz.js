@@ -165,6 +165,7 @@ function validate(callback, param1, param2, param3) {
                 if (document.getElementById('search').value == this.responseText) {
                     score++;
                     console.log("correct");
+                    clearTimeout(timeremains);
                     callback(param1,param2, param3);
                 } else {
                     console.log("Wrong");
@@ -179,6 +180,7 @@ function validate(callback, param1, param2, param3) {
 }
 
 var clock = 30;
+var timeremains;
 function tick() {
-    
+    timeremains = setInterval();
 }
