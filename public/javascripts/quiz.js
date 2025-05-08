@@ -63,6 +63,7 @@ function getNextMon() {
                 num++;
             }
 
+
         }
     };
 
@@ -74,7 +75,7 @@ function getNextMon() {
 
 function questionGen(name) {
     var randmon = apiAddress.concat(name);
-    console.log(randmon);
+    //console.log(randmon);
 
     var xhttp = new XMLHttpRequest();
 
