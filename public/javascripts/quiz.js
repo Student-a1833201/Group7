@@ -3,12 +3,15 @@ var quizmon = "";
 var score = 0;
 
 // Event Listeners are being weird
+
+// Fills Search bar
 function fill(listnum) {
     var element2 = document.getElementsByClassName('result');
     var element = document.getElementById('search');
     element.value = element2[listnum].innerText
 }
 
+// Search Bar
 function getNextMon() {
     var element = document.getElementById('search');
     var element2 = document.getElementsByClassName('result');
