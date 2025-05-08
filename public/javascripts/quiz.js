@@ -126,6 +126,7 @@ function getRandQuizMon(callback, callback2) {
                 var qmon = data.results[Math.floor(Math.random()*1025)].name;
                 callback(qmon);
                 callback2(qmon);
+                callback3();
             }
         }
 
@@ -134,10 +135,10 @@ function getRandQuizMon(callback, callback2) {
     xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0", true);
     xhttp.send();
 
-  }
+}
 
 
-  function savemon(curmon) {
+function savemon(curmon) {
     console.log("Current:" + curmon);
     var xhttp = new XMLHttpRequest();
 
@@ -154,7 +155,7 @@ function getRandQuizMon(callback, callback2) {
 }
 
 
-  function validate(callback, param1, param2) {
+function validate(callback, param1, param2, param3) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
@@ -164,7 +165,7 @@ function getRandQuizMon(callback, callback2) {
                 if (document.getElementById('search').value == this.responseText) {
                     score++;
                     console.log("correct");
-                    callback(param1,param2);
+                    callback(param1,param2, param3);
                 } else {
                     console.log("Wrong");
                 }
@@ -175,4 +176,9 @@ function getRandQuizMon(callback, callback2) {
     xhttp.open("GET", "/currentquiz.txt", true);
 
     xhttp.send();
-  }
+}
+
+var clock = 30;
+function tick() {
+    
+}
