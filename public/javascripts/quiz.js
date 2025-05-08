@@ -187,5 +187,7 @@ function tick() {
 }
 
 function tock() {
-    
+    clock -=1;
+    if (clock = 0)
+
 }
