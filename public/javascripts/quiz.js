@@ -39,32 +39,33 @@ function getNextMon() {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
-        if (this.responseText != "") {
-            //console.log(this.responseText)
-            var data = JSON.parse(this.responseText);
-            // Searches if substring matches a pokemon
-            for (let i = 0; i < 1025; i++) {
-                monname = data.results[i].name;
-                monname = monname.substr(0,search.length);
-                if (monname == search) {
-                    if (num != 3) {
-                        element2[num].style.display = "inital";
-                        element2[num].innerText = data.results[i].name;
-                        num++
-                        result = true;
-                        //break;
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText != "") {
+                //console.log(this.responseText)
+                var data = JSON.parse(this.responseText);
+                // Searches if substring matches a pokemon
+                for (let i = 0; i < 1025; i++) {
+                    monname = data.results[i].name;
+                    monname = monname.substr(0,search.length);
+                    if (monname == search) {
+                        if (num != 3) {
+                            element2[num].style.display = "inital";
+                            element2[num].innerText = data.results[i].name;
+                            num++
+                            result = true;
+                            //break;
+                        }
                     }
                 }
+
+                // Hides options if not necessary
+                while (num < 3) {
+                    element2[num].style.display = "none";
+                    num++;
+                }
             }
-
-            // Hides options if not necessary
-            while (num < 3) {
-                element2[num].style.display = "none";
-                num++;
-            }
-
-
         }
+
     };
 
     // Sources list of pokemon
@@ -80,27 +81,30 @@ function questionGen(name) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
-        var data = JSON.parse(this.responseText);
+        if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
 
-        var sprite = document.getElementById('sprite');
-        if (score < 3) {
-            sprite.src = data.sprites.front_default;
-        } else {
-            sprite.style.display = "none";
+            var sprite = document.getElementById('sprite');
+            if (score < 3) {
+                sprite.src = data.sprites.front_default;
+            } else {
+                sprite.style.display = "none";
+            }
+
+            var typeAddress = "../images/types/";
+            var type = document.getElementsByClassName('type');
+            if (score < 7) {
+                type[0].src = typeAddress.concat(data.types[0].type.name,".png");
+                type[0].alt = data.types[0].type.name
+
+                type[1].src = typeAddress.concat(data.types[1]?.type.name || "uknown",".png");
+                type[1].alt = data.types[1]?.type.name || "uknown";
+            } else {
+                type[0].style.display = "none";
+                type[1].style.display = "none";
+            }
         }
 
-        var typeAddress = "../images/types/";
-        var type = document.getElementsByClassName('type');
-        if (score < 7) {
-            type[0].src = typeAddress.concat(data.types[0].type.name,".png");
-            type[0].alt = data.types[0].type.name
-
-            type[1].src = typeAddress.concat(data.types[1]?.type.name || "uknown",".png");
-            type[1].alt = data.types[1]?.type.name || "uknown";
-        } else {
-            type[0].style.display = "none";
-            type[1].style.display = "none";
-        }
     };
 
     xhttp.open("GET", randmon, true);
@@ -112,16 +116,19 @@ function getRandQuizMon(callback, callback2) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
-        if (this.responseText != "") {
-            //console.log(this.responseText)
-            var data = JSON.parse(this.responseText);
-            //var data = this.responseText;
-            //console.log(data.results[Math.floor(Math.random()*1025)].name);
-            console.log("Hello World");
-            var qmon = data.results[Math.floor(Math.random()*1025)].name;
-            callback(qmon);
-            callback2(qmon);
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText != "") {
+                //console.log(this.responseText)
+                var data = JSON.parse(this.responseText);
+                //var data = this.responseText;
+                //console.log(data.results[Math.floor(Math.random()*1025)].name);
+                console.log("Hello World");
+                var qmon = data.results[Math.floor(Math.random()*1025)].name;
+                callback(qmon);
+                callback2(qmon);
+            }
         }
+
     };
 
     xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0", true);
@@ -151,13 +158,15 @@ function getRandQuizMon(callback, callback2) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
-        console.log(this.responseText);
-        if (document.getElementById('search').value == this.responseText) {
-            score++;
-            console.log("correct");
-            callback(param1,param2);
-        } else {
-            console.log("Wrong");
+        if (this.responseText != "") {
+            console.log(this.responseText);
+            if (document.getElementById('search').value == this.responseText) {
+                score++;
+                console.log("correct");
+                callback(param1,param2);
+            } else {
+                console.log("Wrong");
+            }
         }
     };
 
