@@ -193,7 +193,8 @@ function tock() {
         clearTimeout(timeremains);
     } else {
         var timer = document.getElementById('countdown');
-        timer.innerText = 
+        var clockstring = "Time Remaining: ";
+        timer.innerText = clockstring.concat(clock);
     }
 
 }
