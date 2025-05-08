@@ -189,11 +189,11 @@ function tick() {
 
 function tock() {
     console.log("tock");
-    clock = clock - 1;
     if (clock === 0) {
         // Runs lose
         clearTimeout(timeremains);
     } else {
+        clock = clock - 1;
         var timer = document.getElementById('countdown');
         var clockstring = "Time Remaining: ";
         timer.innerText = clockstring.concat(clock);
