@@ -112,7 +112,7 @@ function questionGen(name) {
     xhttp.send();
 }
 
-function getRandQuizMon(callback, callback2) {
+function getRandQuizMon(callback, callback2, callback3) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
@@ -182,12 +182,14 @@ function validate(callback, param1, param2, param3) {
 var clock = -1;
 var timeremains;
 function tick() {
+    console.log("tick");
     clock = 30;
     timeremains = setInterval(tock, 1000);
 }
 
 function tock() {
-    clock -=1;
+    console.log("tock");
+    clock = clock - 1;
     if (clock === 0) {
         // Runs lose
         clearTimeout(timeremains);
