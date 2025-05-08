@@ -182,12 +182,18 @@ function validate(callback, param1, param2, param3) {
 var clock = -1;
 var timeremains;
 function tick() {
-    clock = 30
+    clock = 30;
     timeremains = setInterval(tock, 1000);
 }
 
 function tock() {
     clock -=1;
-    if (clock = 0)
+    if (clock === 0) {
+        // Runs lose
+        clearTimeout(timeremains);
+    } else {
+        var timer = document.getElementById('countdown');
+        timer.innerText = 
+    }
 
 }
