@@ -60,6 +60,7 @@ function getNextMon() {
     xhttp.send();
 }
 
+// Generates information on page
 function questionGen(name) {
     var randmon = apiAddress.concat(name);
     //console.log(randmon);
@@ -100,6 +101,7 @@ function questionGen(name) {
     xhttp.send();
 }
 
+// Selects a mon randomly
 function getRandQuizMon(callback, callback2, callback3) {
     var xhttp = new XMLHttpRequest();
 
@@ -125,6 +127,7 @@ function getRandQuizMon(callback, callback2, callback3) {
 
 }
 
+// Saves the pokemon to the current question
 function savemon(curmon) {
     console.log("Current:" + curmon);
     var xhttp = new XMLHttpRequest();
