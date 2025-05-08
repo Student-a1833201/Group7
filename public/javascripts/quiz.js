@@ -3,19 +3,6 @@ var quizmon = "";
 var score = 0;
 
 // Event Listeners are being weird
-/*
-document.addEventListener("DOMLOAD", init, false);
-
-
-function init() {
-    console.log("hello world");
-    var searchbar = document.getElementById('Confirm');
-    searchbar.addEventListener("click", showNextMon);
-
-    var searchbar = document.getElementById('search');
-    searchbar.addEventListener("change", showNextMon);
-};*/
-
 function fill(listnum) {
     var element2 = document.getElementsByClassName('result');
     var element = document.getElementById('search');
