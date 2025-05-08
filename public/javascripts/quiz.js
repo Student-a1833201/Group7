@@ -118,7 +118,7 @@ function getRandQuizMon(callback, callback2) {
             console.log("Hello World");
             var qmon = data.results[Math.floor(Math.random()*1025)].name;
             callback(qmon);
-            callback2(qmon);
+            callback2(qmon, );
         }
     };
 
