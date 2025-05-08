@@ -179,8 +179,13 @@ function validate(callback, param1, param2, param3) {
     xhttp.send();
 }
 
-var clock = 30;
+var clock = -1;
 var timeremains;
 function tick() {
-    timeremains = setInterval();
+    clock = 30
+    timeremains = setInterval(tock, 1000);
+}
+
+function tock() {
+    
 }
