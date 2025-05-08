@@ -4,13 +4,6 @@ var score = 0;
 
 // Event Listeners are being weird
 
-// Fills Search bar
-function fill(listnum) {
-    var element2 = document.getElementsByClassName('result');
-    var element = document.getElementById('search');
-    element.value = element2[listnum].innerText
-}
-
 // Search Bar
 function getNextMon() {
     var element = document.getElementById('search');
@@ -63,6 +56,38 @@ function getNextMon() {
     xhttp.send();
 }
 
+// Fills Search bar
+function fill(listnum) {
+    var element2 = document.getElementsByClassName('result');
+    var element = document.getElementById('search');
+    element.value = element2[listnum].innerText
+}
+
+// Selects a mon randomly
+function getRandQuizMon(callback, callback2, callback3) {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText != "") {
+                //console.log(this.responseText)
+                var data = JSON.parse(this.responseText);
+                //var data = this.responseText;
+                //console.log(data.results[Math.floor(Math.random()*1025)].name);
+                var qmon = data.results[Math.floor(Math.random()*1025)].name;
+                callback(qmon);
+                callback2(qmon);
+                callback3();
+            }
+        }
+
+    };
+
+    xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0", true);
+    xhttp.send();
+
+}
+
 // Generates information on page
 function questionGen(name) {
     var randmon = apiAddress.concat(name);
@@ -104,39 +129,12 @@ function questionGen(name) {
     xhttp.send();
 }
 
-// Selects a mon randomly
-function getRandQuizMon(callback, callback2, callback3) {
-    var xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            if (this.responseText != "") {
-                //console.log(this.responseText)
-                var data = JSON.parse(this.responseText);
-                //var data = this.responseText;
-                //console.log(data.results[Math.floor(Math.random()*1025)].name);
-                console.log("Hello World");
-                var qmon = data.results[Math.floor(Math.random()*1025)].name;
-                callback(qmon);
-                callback2(qmon);
-                callback3();
-            }
-        }
-
-    };
-
-    xhttp.open("GET", "https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0", true);
-    xhttp.send();
-
-}
-
 // Saves the pokemon to the current question
 function savemon(curmon) {
-    console.log("Current:" + curmon);
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
-        console.log("Confirm");
+        //console.log("Confirm");
     };
 
     //var dir = "/newmon";
@@ -154,14 +152,14 @@ function validate(callback, param1, param2, param3) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText != "") {
-                console.log("Validation");
+                //console.log("Validation");
                 if (document.getElementById('search').value == this.responseText) {
                     score++;
-                    console.log("correct");
+                    //console.log("correct");
                     clearTimeout(timeremains);
                     callback(param1,param2, param3);
                 } else {
-                    console.log("Wrong");
+                    //console.log("Wrong");
                 }
             }
         }
@@ -177,14 +175,14 @@ var timeremains;
 
 // Sets up Clock
 function tick() {
-    console.log("tick");
+    //console.log("tick");
     clock = 30;
     timeremains = setInterval(tock, 1000);
 }
 
 // Increments Clock
 function tock() {
-    console.log("tock");
+    //console.log("tock");
     if (clock === 0) {
         // Runs lose
         clearTimeout(timeremains);
