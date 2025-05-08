@@ -141,7 +141,7 @@ function getRandQuizMon(callback, callback2) {
 
     xhttp.open("POST", "/quizans", true);
 
-    xhttp.send(JSON.stringify({ans:curmon, ID: 0}));
+    xhttp.send(JSON.stringify({ans:"test", ID: 0}));
 }
 
 
