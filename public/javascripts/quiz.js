@@ -60,7 +60,6 @@ function getNextMon() {
     xhttp.send();
 }
 
-
 function questionGen(name) {
     var randmon = apiAddress.concat(name);
     //console.log(randmon);
@@ -126,7 +125,6 @@ function getRandQuizMon(callback, callback2, callback3) {
 
 }
 
-
 function savemon(curmon) {
     console.log("Current:" + curmon);
     var xhttp = new XMLHttpRequest();
@@ -143,7 +141,7 @@ function savemon(curmon) {
     xhttp.send(JSON.stringify({ans:curmon, ID: 0}));
 }
 
-
+// Checks if guess was correct
 function validate(callback, param1, param2, param3) {
     var xhttp = new XMLHttpRequest();
 
@@ -170,12 +168,15 @@ function validate(callback, param1, param2, param3) {
 
 var clock = -1;
 var timeremains;
+
+// Sets up Clock
 function tick() {
     console.log("tick");
     clock = 30;
     timeremains = setInterval(tock, 1000);
 }
 
+// Increments Clock
 function tock() {
     console.log("tock");
     if (clock === 0) {
