@@ -14,7 +14,7 @@ router.get('/currentquiz.txt', function(req, res) {
 });
 
 router.post('/quizans', function(req, res) {
-  currentans = req.params.mon;
+  currentans = req.body.ans;
 
   res.send("Abc");
 });

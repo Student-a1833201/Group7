@@ -129,6 +129,7 @@ function getRandQuizMon(callback, callback2) {
 
 
   function savemon(curmon) {
+    console.log(curmon);
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
@@ -162,4 +163,3 @@ function getRandQuizMon(callback, callback2) {
 
     xhttp.send();
   }
-  
