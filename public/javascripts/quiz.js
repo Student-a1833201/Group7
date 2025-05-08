@@ -154,7 +154,7 @@ function getRandQuizMon(callback, callback2) {
         if (document.getElementById('search').value == this.responseText) {
             score++;
             console.log("correct");
-            callback(questionGen);
+            callback(param1,param2);
         } else {
             console.log("Wrong");
         }
