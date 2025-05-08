@@ -12,13 +12,13 @@ router.get('/currentquiz.txt', function(req, res) {
   console.log("out");
   res.send(currentans);
 });
-
+*/
 router.get('/newmon/:mon', function(req, res) {
   currentans = req.params.mon;
 
   res.send("Abc");
 });
-*/
+
 
 
 

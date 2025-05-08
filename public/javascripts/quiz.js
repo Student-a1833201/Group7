@@ -127,7 +127,7 @@ function getRandQuizMon(callback, callback2) {
 
   }
 
-  
+
   function savemon(curmon) {
     var xhttp = new XMLHttpRequest();
 
@@ -135,10 +135,10 @@ function getRandQuizMon(callback, callback2) {
         console.log("Confirm");
     };
 
-    var dir = "/newmon/:mon";
-    dir = dir.concat(curmon);
+    //var dir = "/newmon";
+    //dir = dir.concat(curmon);
 
-    xhttp.open("GET", dir, true);
+    xhttp.open("POST", newmon.html?param1="+encodeURIComponent(curmon)s, true);
 
     xhttp.send();
 }
