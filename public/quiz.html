@@ -1,17 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title> Quiz - Poke-Pare </title>
-        <link rel="stylesheet" href="./stylesheets/style.css">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pokémon Quiz Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Pokémon Quiz Generator</h1>
 
-    </head>
+    <label for="quizType">Choose a Quiz Category:</label>
+    <select id="quizType">
+      <option value="types">Types</option>
+      <option value="abilities">Abilities</option>
+      <option value="evolution">Evolutions</option>
+      <option value="pokedex">Pokedex Trivia</option>
+    </select>
 
-    <body>
-        <div id="header">
-            <h1 id="title"> Welcome to Poke-pare </h1>
-            <h1> the new tool for comparing Pokemon </h1>
-            <h1> Quiz </h1>
-        </div>
-    </body>
+    <button onclick="startQuiz()">Start Quiz</button>
 
+    <div id="quizContainer" class="quiz-box"></div>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    async function fetchPokemonList(limit = 150) {
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`);
+      const data = await res.json();
+      return data.results;
+    }
+
+    async function getPokemonDetails(url) {
+      const res = await fetch(url);
+      return await res.json();
+    }
+
+    async function startQuiz() {
+      document.getElementById("quizContainer").innerHTML = "Loading quiz...";
+      const quizType = document.getElementById("quizType").value;
+      const pokemonList = await fetchPokemonList();
+      const selected = shuffle(pokemonList).slice(0, 5);
+
+      const questions = [];
+
+      for (const poke of selected) {
+        const data = await getPokemonDetails(poke.url);
+        let q = "", a = "";
+
+        switch (quizType) {
+          case "types":
+            q = `What type(s) is ${capitalize(data.name)}?`;
+            a = data.types.map(t => capitalize(t.type.name)).join("/");
+            break;
+          case "abilities":
+            q = `Which of these is an ability of ${capitalize(data.name)}?`;
+            a = capitalize(data.abilities[0].ability.name);
+            break;
+          case "evolution":
+            q = `What does ${capitalize(data.name)} evolve from?`;
+            const speciesRes = await fetch(data.species.url);
+            const speciesData = await speciesRes.json();
+            a = speciesData.evolves_from_species
+              ? capitalize(speciesData.evolves_from_species.name)
+              : "None";
+            break;
+          case "pokedex":
+            q = `What is the Pokédex number of ${capitalize(data.name)}?`;
+            a = data.id.toString();
+            break;
+        }
+
+        questions.push({ q, a });
+      }
+
+      renderQuiz(questions);
+    }
+
+    function renderQuiz(questions) {
+      const container = document.getElementById("quizContainer");
+      container.innerHTML = "";
+      const form = document.createElement("form");
+      form.id = "quizForm";
+
+      questions.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "question";
+        div.innerHTML = `
+          <p><strong>Q${index + 1}:</strong> ${item.q}</p>
+          <input type="text" name="q${index}" data-answer="${item.a}" placeholder="Your answer" />
+        `;
+        form.appendChild(div);
+      });
+
+      const submit = document.createElement("button");
+      submit.type = "button";
+      submit.textContent = "Submit Answers";
+      submit.onclick = () => checkAnswers(questions.length);
+      form.appendChild(submit);
+      container.appendChild(form);
+    }
+
+    function checkAnswers(count) {
+      const form = document.getElementById("quizForm");
+      let correct = 0;
+
+      for (let i = 0; i < count; i++) {
+        const input = form.elements[`q${i}`];
+        const answer = input.dataset.answer.toLowerCase().trim();
+        const user = input.value.toLowerCase().trim();
+
+        if (answer === user) {
+          correct++;
+          input.style.borderColor = "green";
+        } else {
+          input.style.borderColor = "red";
+        }
+      }
+
+      document.getElementById("result").innerHTML = `<p>You got ${correct} / ${count} correct!</p>`;
+    }
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function capitalize(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  </script>
+</body>
 </html>
