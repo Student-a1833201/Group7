@@ -7,6 +7,8 @@
 </head>
 <body>
   <div class="container">
+
+    <button type="button" class="back-btn" onclick="window.location.href='index.html';">Back to Home</button>
     <h1>Pokémon Quiz Generator</h1>
 
     <label for="quizType">Choose a Quiz Category:</label>
@@ -125,7 +127,7 @@
       }
 
       const feedback = `
-        <p>${isCorrect ? "✅ Correct!" : `❌ Wrong! The correct answer was: <strong>${q.correctAnswer}</strong>`}</p>
+        <p>${isCorrect ? "✅ Correct!" : ` Wrong! The correct answer was: <strong>${q.correctAnswer}</strong>`}</p>
       `;
 
       container.innerHTML += feedback;
