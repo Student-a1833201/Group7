@@ -12,6 +12,17 @@
       --highlight: #ffcb05;
       --contrast-color: #3b4cca;
     }
+    button {
+     padding: 0.7rem 1.5rem;
+     font-size: 1rem;
+      background-color: #ffcb05;
+     color: #1e1e2f;
+     border: none;
+      border-radius: 8px;
+      cursor: pointer;
+     margin-top: 1rem;
+     transition: background-color 0.2s;
+}
     body.dark {
       --bg-color: #121212;
       --text-color: #eee;
@@ -78,6 +89,7 @@
   </style>
 </head>
 <body>
+  <button type="button" class="back-btn" onclick="window.location.href='index.html';">Back to Home</button>
   <header>
     <h1>Pokémon Comparator</h1>
     <div class="controls">
