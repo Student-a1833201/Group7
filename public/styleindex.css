@@ -7,7 +7,7 @@
 
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
+    background-color: #969696;
     color: #333;
     line-height: 1.6;
     padding: 1rem;
@@ -16,7 +16,7 @@
   /* Header */
   header {
     text-align: center;
-    background-color: #ffcb05;
+    background-color: #3c3a38;
     color: #2a75bb;
     padding: 2rem 1rem;
     border-radius: 10px;
@@ -52,7 +52,7 @@
 
   /* Feature Cards */
   .feature-card {
-    background-color: white;
+    background-color: rgb(255, 92, 92);
     border: 2px solid #2a75bb;
     border-radius: 12px;
     padding: 1.5rem;
@@ -78,7 +78,7 @@
 
   /* Buttons */
   button {
-    background-color: #2a75bb;
+    background-color: #63893b;
     color: white;
     border: none;
     padding: 0.6rem 1.2rem;
