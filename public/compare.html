@@ -1,154 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real-Time Pokémon Comparator</title>
-  <style>
-    :root {
-      --bg-color: #fff;
-      --text-color: #111;
-      --card-bg: #f2f2f2;
-      --highlight: #ffcb05;
-      --contrast-color: #3b4cca;
-    }
-    button {
-     padding: 0.7rem 1.5rem;
-     font-size: 1rem;
-      background-color: #ffcb05;
-     color: #1e1e2f;
-     border: none;
-      border-radius: 8px;
-      cursor: pointer;
-     margin-top: 1rem;
-     transition: background-color 0.2s;
-}
-    body.dark {
-      --bg-color: #121212;
-      --text-color: #eee;
-      --card-bg: #1e1e1e;
-      --highlight: #ffd700;
-      --contrast-color: #4c8bf5;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: var(--bg-color);
-      color: var(--text-color);
-      transition: 0.3s;
-    }
-    header, footer {
-      background: var(--contrast-color);
-      color: #fff;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .controls button {
-      margin-left: 10px;
-      padding: 0.5rem 1rem;
-      background: var(--highlight);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    main {
-      padding: 1rem;
-    }
-    .compare-box {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .pokemon-card {
-      flex: 1 1 45%;
-      background: var(--card-bg);
-      padding: 1rem;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .pokemon-card img {
-      width: 120px;
-    }
-    .search-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .search-section input {
-      flex: 1 1 45%;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-    footer {
-      justify-content: center;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokémon Comparator</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <button type="button" class="back-btn" onclick="window.location.href='index.html';">Back to Home</button>
   <header>
     <h1>Pokémon Comparator</h1>
+    <nav>
+      <a href="#compare">Compare</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#custom">Create</a>
+    </nav>
     <div class="controls">
-      <button type="button" onclick="toggleDark()">Dark Mode</button>
-      <button type="button" onclick="toggleText()">Text Size</button>
+      <button id="darkToggle">Dark Mode</button>
+      <button id="textSizeToggle">Text Size</button>
     </div>
   </header>
+
   <main>
-    <section>
-      <h2>Compare Two Pokémon</h2>
-      <div class="search-section">
-        <input type="text" id="pokemonInput1" placeholder="Enter first Pokémon name...">
-        <input type="text" id="pokemonInput2" placeholder="Enter second Pokémon name...">
-      </div>
+    <section id="compare">
+      <h2>Compare Pokémon</h2>
+      <input type="search" id="searchInput1" placeholder="Search Pokémon One..."/>
+      <input type="search" id="searchInput2" placeholder="Search Pokémon Two..."/>
       <div class="compare-box">
-        <div class="pokemon-card" id="pokemonCard1">🧪 Awaiting Input</div>
-        <div class="pokemon-card" id="pokemonCard2">🧪 Awaiting Input</div>
+        <div class="pokemon-card" id="pokemon1">
+          <h3>Pokémon One</h3>
+          <img src="" alt="" id="img1">
+          <p id="type1"></p>
+          <p id="stats1"></p>
+          <p id="heightWeight1"></p>
+          <p id="abilities1"></p>
+        </div>
+        <div class="pokemon-card" id="pokemon2">
+          <h3>Pokémon Two</h3>
+          <img src="" alt="" id="img2">
+          <p id="type2"></p>
+          <p id="stats2"></p>
+          <p id="heightWeight2"></p>
+          <p id="abilities2"></p>
+        </div>
       </div>
     </section>
   </main>
+
   <footer>
-    <p>&copy; 2025 Pokémon Comparator | Built using PokeAPI</p>
+    <p>&copy; 2025 Pokémon Comparator | Built for Educational Use</p>
   </footer>
+
   <script>
-    const input1 = document.getElementById('pokemonInput1');
-    const input2 = document.getElementById('pokemonInput2');
-    input1.addEventListener('change', () => fetchPokemon(input1.value, 'pokemonCard1'));
-    input2.addEventListener('change', () => fetchPokemon(input2.value, 'pokemonCard2'));
-    function toggleDark() {
+    const darkToggle = document.getElementById('darkToggle');
+    const textSizeToggle = document.getElementById('textSizeToggle');
+
+    darkToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark');
-    }
-    function toggleText() {
+    });
+
+    textSizeToggle.addEventListener('click', () => {
       document.body.classList.toggle('large-text');
-    }
-    async function fetchPokemon(name, cardId) {
-      const card = document.getElementById(cardId);
+    });
+
+    const searchInput1 = document.getElementById('searchInput1');
+    const searchInput2 = document.getElementById('searchInput2');
+
+    searchInput1.addEventListener('change', () => fetchPokemon(searchInput1.value.toLowerCase(), 1));
+    searchInput2.addEventListener('change', () => fetchPokemon(searchInput2.value.toLowerCase(), 2));
+
+    async function fetchPokemon(name, slot) {
       try {
-        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
-        if (!res.ok) throw new Error('Pokémon not found');
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
         const data = await res.json();
+
+        document.getElementById(`img${slot}`).src = data.sprites.front_default;
+        document.getElementById(`img${slot}`).alt = data.name;
+
+        // Type
         const types = data.types.map(t => t.type.name).join(' / ');
-        const stats = {};
-        data.stats.forEach(s => {
-          stats[s.stat.name] = s.base_stat;
+        document.getElementById(`type${slot}`).textContent = `Type: ${types}`;
+
+        // Stats
+        const statsMap = {};
+        data.stats.forEach(stat => {
+          statsMap[stat.stat.name] = stat.base_stat;
         });
-        card.innerHTML = `
-          <h3>${capitalize(data.name)}</h3>
-          <img src="${data.sprites.front_default}" alt="${data.name}" />
-          <p><strong>Type:</strong> ${types}</p>
-          <p><strong>HP:</strong> ${stats.hp} | <strong>Attack:</strong> ${stats.attack} | <strong>Defense:</strong> ${stats.defense}</p>
-        `;
-      } catch (error) {
-        card.innerHTML = `<p style="color:red;">❌ ${error.message}</p>`;
+
+        document.getElementById(`stats${slot}`).innerHTML =
+          `HP: ${statsMap.hp} | Atk: ${statsMap.attack} | Def: ${statsMap.defense}<br>` +
+          `Sp. Atk: ${statsMap["special-attack"]} | Sp. Def: ${statsMap["special-defense"]} | Speed: ${statsMap.speed}`;
+
+        // Height & Weight
+        const height = data.height / 10; // dm -> m
+        const weight = data.weight / 10; // hg -> kg
+        document.getElementById(`heightWeight${slot}`).textContent = `Height: ${height} m | Weight: ${weight} kg`;
+
+        // Abilities
+        const abilities = data.abilities.map(a => a.ability.name).join(', ');
+        document.getElementById(`abilities${slot}`).textContent = `Abilities: ${abilities}`;
+      } catch (err) {
+        alert(`Pokémon "${name}" not found.`);
       }
-    }
-    function capitalize(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1);
     }
   </script>
 </body>
 </html>
-
