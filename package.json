@@ -13,5 +13,11 @@
     "http-server": "^14.1.1",
     "jade": "^0.29.0",
     "morgan": "~1.9.1"
-  }
+  },
+  "description": "Group7  Shared Repository for Web Development",
+  "main": "app.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
