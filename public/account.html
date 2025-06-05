@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1" >
+<title>Pokemon App - Account</title>
+<link rel="stylesheet" href="styleacc.css" >
+</head>
+<body>
+<header>
+  <div id="profileIcon" title="Account Menu" tabindex="0" aria-haspopup="true" aria-expanded="false">
+    <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User profile icon" >
+  </div>
+  <nav id="profileMenu" role="menu" aria-hidden="true">
+    <button type="button" id="goAccount">Account</button>
+    <button type="button" id="logout">Log Out</button>
+  </nav>
+</header>
+
+<main>
+  <h1>Your Pokemon Account</h1>
+  <small id="message" class="message"></small>
+  <form id="accountForm" novalidate>
+    <label>Username</label>
+    <input type="text" id="accountUsername" disabled >
+
+    <label for="accountEmail">Email</label>
+    <input type="email" id="accountEmail" required >
+
+    <label for="accountProfilePic">Change Profile Picture</label>
+    <input type="file" id="accountProfilePic" accept="image/*" >
+    <img class="profile-pic-preview" id="currentProfilePic" alt="Profile Picture" >
+
+    <button type="submit" class="submit-btn">Save Profile Changes</button>
+  </form>
+  <section class="favorites-list">
+    <h2 class="section-title">Favorite Pokémons</h2>
+    <div id="favoritesContainer"></div>
+  </section>
+  <section class="quiz-results-list">
+    <h2 class="section-title">Quiz Results</h2>
+    <div id="quizResultsContainer"></div>
+  </section>
+</main>
+
+<script src="header-profile.js"></script>
+<script>
+function readFileAsDataURL(file, callback){
+  const reader = new FileReader();
+  reader.onload = e => callback(e.target.result);
+  reader.readAsDataURL(file);
+}
+
+const messageEl = document.getElementById('message');
+const usernameInput = document.getElementById('accountUsername');
+const emailInput = document.getElementById('accountEmail');
+const profilePicInput = document.getElementById('accountProfilePic');
+const currentPicImg = document.getElementById('currentProfilePic');
+const favoritesContainer = document.getElementById('favoritesContainer');
+const quizResultsContainer = document.getElementById('quizResultsContainer');
+
+const users = JSON.parse(localStorage.getItem('pokemonAppUsers') || '{}');
+const loggedInUser = localStorage.getItem('pokemonAppLoggedInUser');
+
+if (!loggedInUser) {
+  // Not logged in - redirect to login page
+  window.location.href = 'login.html';
+} else if (!users[loggedInUser]) {
+  // User data missing - log out for safety
+  localStorage.removeItem('pokemonAppLoggedInUser');
+  window.location.href = 'login.html';
+} else {
+  const user = users[loggedInUser];
+  usernameInput.value = loggedInUser;
+  emailInput.value = user.email || '';
+  currentPicImg.src = user.profilePic || "https://cdn-icons-png.flaticon.com/512/847/847969.png";
+
+  // Show favorites or message
+  if (user.favorites && user.favorites.length > 0) {
+    const list = document.createElement('ul');
+    user.favorites.forEach(fav => {
+      const li = document.createElement('li');
+      li.textContent = fav;
+      list.appendChild(li);
+    });
+    favoritesContainer.innerHTML = '';
+    favoritesContainer.appendChild(list);
+  } else {
+    favoritesContainer.textContent = "You have no favorite Pokémon added yet.";
+  }
+  // Show quiz results or message
+  if (user.quizResults && user.quizResults.length > 0) {
+    const list = document.createElement('ul');
+    user.quizResults.forEach(qr => {
+      const li = document.createElement('li');
+      li.textContent = qr;
+      list.appendChild(li);
+    });
+    quizResultsContainer.innerHTML = '';
+    quizResultsContainer.appendChild(list);
+  } else {
+    quizResultsContainer.textContent = "No quiz results recorded yet.";
+  }
+}
+
+profilePicInput.addEventListener('change', () => {
+  if (profilePicInput.files[0]) {
+    readFileAsDataURL(profilePicInput.files[0], dataUrl => {
+      currentPicImg.src = dataUrl;
+    });
+  }
+});
+
+document.getElementById('accountForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const email = emailInput.value.trim();
+  if (!email) {
+    messageEl.textContent = "Email cannot be empty.";
+    return;
+  }
+  const users = JSON.parse(localStorage.getItem('pokemonAppUsers') || '{}');
+  const user = users[loggedInUser];
+
+  if (profilePicInput.files[0]) {
+    readFileAsDataURL(profilePicInput.files[0], dataUrl => {
+      user.profilePic = dataUrl;
+      user.email = email;
+      users[loggedInUser] = user;
+      localStorage.setItem('pokemonAppUsers', JSON.stringify(users));
+      messageEl.textContent = "Profile updated!";
+      // Update icon on header
+      if (window.updateProfileIcon) window.updateProfileIcon();
+    });
+  } else {
+    user.email = email;
+    users[loggedInUser] = user;
+    localStorage.setItem('pokemonAppUsers', JSON.stringify(users));
+    messageEl.textContent = "Profile updated!";
+  }
+});
+</script>
+</body>
+</html>
