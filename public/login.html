@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" >
+<meta name="viewport" content="width=device-width, initial-scale=1" >
+<title>Pokemon App - Login</title>
+<link rel="stylesheet" href="styleacc.css" >
+</head>
+<body>
+<header>
+  <div id="profileIcon" title="Account Menu" tabindex="0" aria-haspopup="true" aria-expanded="false">
+    <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User profile icon" >
+  </div>
+  <nav id="profileMenu" role="menu" aria-hidden="true">
+    <button type="button" id="goAccount">Account</button>
+    <button type="button" id="logout">Log Out</button>
+  </nav>
+</header>
+
+<main>
+  <h1>Log In to Your Pokemon Account</h1>
+  <small id="message" class="message"></small>
+  <form id="loginForm" novalidate>
+    <label for="loginUsername">Username</label>
+    <input type="text" id="loginUsername" autocomplete="username" required />
+
+    <label for="loginPassword">Password</label>
+    <input type="password" id="loginPassword" autocomplete="current-password" required />
+
+    <button type="submit" class="submit-btn">Log In</button>
+  </form>
+  <button type="button" class="link-button" id="toRegisterBtn">Don't have an account? Register</button>
+</main>
+
+<script src="header-profile.js"></script>
+<script>
+document.getElementById('toRegisterBtn').addEventListener('click', () => {
+  window.location.href = 'register.html';
+});
+
+document.getElementById('loginForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const username = e.target.loginUsername.value.trim();
+  const password = e.target.loginPassword.value;
+  const messageEl = document.getElementById('message');
+
+  if (!username || !password) {
+    messageEl.textContent = "Please fill in both fields.";
+    return;
+  }
+  const users = JSON.parse(localStorage.getItem('pokemonAppUsers') || '{}');
+  if (!users[username]) {
+    messageEl.textContent = "User does not exist. Please register first.";
+    return;
+  }
+  if (users[username].password !== password) {
+    messageEl.textContent = "Incorrect password.";
+    return;
+  }
+  localStorage.setItem('pokemonAppLoggedInUser', username);
+  // redirect to account page
+  window.location.href = 'account.html';
+});
+</script>
+</body>
+</html>
