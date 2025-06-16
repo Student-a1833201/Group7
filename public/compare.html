@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" >
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pokémon Comparator</title>
-  <link rel="stylesheet" href="stylecompare2.css" >
+  <link rel="stylesheet" href="stylecompare2.css">
+  <script>
+    let allPokemonNames = [];
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1000');
+      const data = await res.json();
+      allPokemonNames = data.results.map(p => p.name);
+      populateDatalists();
+    });
+
+    function populateDatalists() {
+      const datalist1 = document.getElementById('pokemonNames1');
+      const datalist2 = document.getElementById('pokemonNames2');
+      allPokemonNames.forEach(name => {
+        const option1 = document.createElement('option');
+        const option2 = document.createElement('option');
+        option1.value = name;
+        option2.value = name;
+        datalist1.appendChild(option1);
+        datalist2.appendChild(option2);
+      });
+    }
+  </script>
 </head>
 <body>
   <header>
     <button type="button" class="back-btn" onclick="window.location.href='index.html';">Back to Home</button>
-
     <h1>Pokémon Comparator</h1>
     <nav>
       <a href="compare.html">Compare</a>
@@ -18,15 +40,21 @@
     </nav>
     <div class="controls">
       <button type="button" id="darkToggle">Dark Mode</button>
-      <button type="button" id="textSizeToggle">Text Size</button>
+      <div class="text-size-controls">
+        <button type="button" id="textSizeIncrease">A+</button>
+        <button type="button" id="textSizeDecrease">A-</button>
+      </div>
     </div>
   </header>
 
   <main>
     <section id="compare">
       <h2>Compare Pokémon</h2>
-      <input type="search" id="searchInput1" placeholder="Search Pokémon One...">
-      <input type="search" id="searchInput2" placeholder="Search Pokémon Two...">
+      <input list="pokemonNames1" id="searchInput1" placeholder="Search Pokémon One...">
+      <datalist id="pokemonNames1"></datalist>
+      <input list="pokemonNames2" id="searchInput2" placeholder="Search Pokémon Two...">
+      <datalist id="pokemonNames2"></datalist>
+
       <div class="compare-box">
         <div class="pokemon-card" id="pokemon1">
           <h3>Pokémon One</h3>
@@ -54,14 +82,27 @@
 
   <script>
     const darkToggle = document.getElementById('darkToggle');
-    const textSizeToggle = document.getElementById('textSizeToggle');
+    const increaseBtn = document.getElementById('textSizeIncrease');
+    const decreaseBtn = document.getElementById('textSizeDecrease');
+    let currentSize = 1;
 
     darkToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.toggle('dark');
+      darkToggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
     });
 
-    textSizeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('large-text');
+    increaseBtn.addEventListener('click', () => {
+      if (currentSize < 1.75) {
+        currentSize += 0.1;
+        document.body.style.fontSize = `${currentSize}rem`;
+      }
+    });
+
+    decreaseBtn.addEventListener('click', () => {
+      if (currentSize > 0.75) {
+        currentSize -= 0.1;
+        document.body.style.fontSize = `${currentSize}rem`;
+      }
     });
 
     const searchInput1 = document.getElementById('searchInput1');
@@ -77,29 +118,28 @@
 
         document.getElementById(`img${slot}`).src = data.sprites.front_default;
         document.getElementById(`img${slot}`).alt = data.name;
+document.querySelector(`#pokemon${slot} h3`).textContent = data.name.charAt(0).toUpperCase() + data.name.slice(1);
 
-        // Type
         const types = data.types.map(t => t.type.name).join(' / ');
         document.getElementById(`type${slot}`).textContent = `Type: ${types}`;
 
-        // Stats
         const statsMap = {};
         data.stats.forEach(stat => {
           statsMap[stat.stat.name] = stat.base_stat;
         });
 
         document.getElementById(`stats${slot}`).innerHTML =
-          `HP: ${statsMap.hp} | Atk: ${statsMap.attack} | Def: ${statsMap.defense}<br>` +
-          `Sp. Atk: ${statsMap["special-attack"]} | Sp. Def: ${statsMap["special-defense"]} | Speed: ${statsMap.speed}`;
+          `HP: ${statsMap.hp}, Atk: ${statsMap.attack}, Def: ${statsMap.defense}, ` +
+          `Sp. Atk: ${statsMap["special-attack"]}, Sp. Def: ${statsMap["special-defense"]}, Speed: ${statsMap.speed}`;
 
-        // Height & Weight
-        const height = data.height / 10; // dm -> m
-        const weight = data.weight / 10; // hg -> kg
-        document.getElementById(`heightWeight${slot}`).textContent = `Height: ${height} m | Weight: ${weight} kg`;
+        const height = data.height / 10;
+        const weight = data.weight / 10;
+        document.getElementById(`heightWeight${slot}`).textContent = `Height: ${height} m, Weight: ${weight} kg`;
 
-        // Abilities
         const abilities = data.abilities.map(a => a.ability.name).join(', ');
-        document.getElementById(`abilities${slot}`).textContent = `Abilities: ${abilities}`;
+        const baseExp = data.base_experience;
+        document.getElementById(`abilities${slot}`).textContent = `Abilities: ${abilities}, Base Exp: ${baseExp}`;
+
       } catch (err) {
         alert(`Pokémon "${name}" not found.`);
       }
@@ -107,13 +147,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
