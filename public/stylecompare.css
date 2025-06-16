@@ -1,0 +1,134 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #e0f7fa, #ffffff);
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 3em;
+    color: #4a4a4a;
+}
+
+nav {
+    margin: 20px 0;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Controls */
+.controls {
+    margin: 20px 0;
+}
+
+/* Main Section */
+main {
+    text-align: center;
+}
+
+#compare {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* Input Styles */
+input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    width: calc(100% - 22px); /* Full width minus padding */
+}
+
+/* Compare Box */
+.compare-box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.pokemon-card {
+    background-color: #ffcc00;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 45%; /* Adjust width for two cards */
+    text-align: center;
+}
+
+.pokemon-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.pokemon-card h3 {
+    font-size: 1.5em;
+    color: #4a4a4a;
+    margin-bottom: 10px;
+}
+
+.pokemon-card p {
+    font-size: 1em;
+    color: #333;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Button Styles */
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Dark Mode Styles */
+body.dark {
+    background: #333;
+    color: #fff;
+}
+
+body.dark header, body.dark .pokemon-card {
+    background: #444;
+    color: #fff;
+}
+
+body.dark nav a {
+    color: #66ccff;
+}
