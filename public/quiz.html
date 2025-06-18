@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="stylequiz2.css" >
 </head>
 <body>
+
   <div class="container">
     <button type="button" class="back-btn" onclick="window.location.href='index.html';">Back to Home</button>
     <h1>Pokémon Quiz Generator</h1>
@@ -141,13 +142,26 @@
       }, 1500);
     }
 
-    function showResult() {
-      document.getElementById("quizContainer").innerHTML = "";
-      document.getElementById("result").innerHTML = `
-        <h2>Quiz Complete!</h2>
-        <p>You got ${score} out of ${questions.length} correct.</p>
-      `;
+    async function showResult() {
+    document.getElementById("quizContainer").innerHTML = "";
+    document.getElementById("result").innerHTML = `
+     <h2>Quiz Complete!</h2>
+      <p>You got ${score} out of ${questions.length} correct.</p>
+  `;
+
+  // Check if user is logged in
+  const username = localStorage.getItem('pokemonAppLoggedInUser ');
+  if (username) {
+    const users = JSON.parse(localStorage.getItem('pokemonAppUsers') || '{}');
+    if (users[username]) {
+      // Update the user's quiz score
+      users[username].quizScore = score; // Save the score
+      localStorage.setItem('pokemonAppUsers', JSON.stringify(users)); // Save back to localStorage
+      console.log('Score saved successfully');
     }
+  }
+}
+
 
     async function generateTypeOptions(correct) {
       const allTypes = ["Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dark", "Dragon", "Steel", "Fairy"];
